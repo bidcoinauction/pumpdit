@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     body {
       background-color: #0d0b14;
@@ -62,13 +63,21 @@
         cursor: pointer;
         border: 1px solid #ff4500;
     }
+    /* Helper class to make icons align with H2 text */
+    .h2-icon {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        margin-right: 0.5em;
+        vertical-align: -0.125em;
+    }
   </style>
 </head>
 <body class="antialiased">
 
   <header class="w-full bg-[#1a1823] text-orange-400 text-xs text-center py-2 border-b border-[#2C2A37] flex justify-between items-center px-4 sticky top-0 z-50">
     <div class="flex items-center gap-2">
-        <img src="https://updatedcardscript.standard.us-east-1.oortstorages.com/ChatGPT%20Image%20Aug%207%2C%202025%2C%2001_32_31%20PM.png" alt="Pumpdit Logo" class="h-6 w-6 rounded-full">
+        <img src="https://updatedcardscript.standard.us-east-1.oortstorages.com/ChatGPT%20Image%20Aug%207%2C%202025%2C%2003_19_27%20PM.png" alt="Pumpdit Logo" class="h-6 w-6 rounded-full">
         <span>Live $PUMPDIT: <span id="pumpdit-price">$0.0000123</span></span>
     </div>
     <div id="wallet-status">
@@ -82,15 +91,17 @@
   </div>
 
   <section class="text-center px-6 section-block">
-     <img src="https://updatedcardscript.standard.us-east-1.oortstorages.com/ChatGPT%20Image%20Aug%207%2C%202025%2C%2001_32_31%20PM.png" alt="Pumpdit Logo" class="h-24 w-24 mx-auto mb-6 rounded-full shadow-lg">
+     <img src="https://updatedcardscript.standard.us-east-1.oortstorages.com/ChatGPT%20Image%20Aug%207%2C%202025%2C%2003_19_27%20PM.png" alt="Pumpdit Logo" class="h-24 w-24 mx-auto mb-6 rounded-full shadow-lg">
      <h1 class="text-3xl md:text-4xl mb-4 font-bold gradient-text glitch">Weaponized Influence.</h1>
      <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">The memecoin that turns Reddit clout into currency. Buy karma. Push narratives. Dominate subcultures.</p>
     <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
-      <button onclick="document.getElementById('buy-section').scrollIntoView();" class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full btn-glow text-base">
+      <button onclick="document.getElementById('buy-section').scrollIntoView();" class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full btn-glow text-base flex items-center justify-center gap-2">
+        <i data-lucide="coins" class="w-5 h-5"></i>
         Buy $PUMPDIT
       </button>
-      <button onclick="document.getElementById('order-section').scrollIntoView();" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-base">
-        🧃 Deploy Karma Bomb
+      <button onclick="document.getElementById('order-section').scrollIntoView();" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-base flex items-center justify-center gap-2">
+        <i data-lucide="bomb" class="w-5 h-5"></i>
+        Deploy Karma Bomb
       </button>
     </div>
   </section>
@@ -98,7 +109,7 @@
   <div class="section-divider"></div>
 
   <section id="buy-section" class="text-center px-6 section-block">
-    <h2 class="text-3xl mb-8 font-bold gradient-text glitch">💰 Get Your Ammo</h2>
+    <h2 class="text-3xl mb-8 font-bold gradient-text glitch flex items-center justify-center gap-3"><i data-lucide="archive" class="w-8 h-8"></i> Get Your Ammo</h2>
     <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-left text-sm">
         <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]">
             <p class="text-orange-400 mb-2 text-lg">1. Get a Wallet</p>
@@ -125,33 +136,33 @@
   <div class="section-divider"></div>
 
   <section class="text-center px-6 section-block">
-     <h2 class="text-3xl mb-8 font-bold gradient-text glitch">🧭 Functional Flow</h2>
+     <h2 class="text-3xl mb-8 font-bold gradient-text glitch flex items-center justify-center gap-3"><i data-lucide="compass" class="w-8 h-8"></i> Functional Flow</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto text-sm">
-      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg">🟢 1.</p><p class="text-gray-300">Land on site. Message: "Let’s rig the Reddit algo."</p></div>
-      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg">🔐 2.</p><p class="text-gray-300">Connect Wallet. Message: "Link up so we know you’re not a bot (yet)."</p></div>
-      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg">📦 3.</p><p class="text-gray-300">Choose Package. Message: "Pick your poison. Want fake fans or real fire?"</p></div>
-      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg">🔢 4.</p><p class="text-gray-300">Set Quantity. Message: "Only ~$12 of $PUMPDIT to hijack the hot tab."</p></div>
-      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg">🧾 5.</p><p class="text-gray-300">Place Order. Message: "Your order is live. Let the karma rain begin."</p></div>
+      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg flex items-center gap-2"><i data-lucide="play-circle" class="w-5 h-5"></i> 1.</p><p class="text-gray-300">Land on site. Message: "Let’s rig the Reddit algo."</p></div>
+      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg flex items-center gap-2"><i data-lucide="lock" class="w-5 h-5"></i> 2.</p><p class="text-gray-300">Connect Wallet. Message: "Link up so we know you’re not a bot (yet)."</p></div>
+      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg flex items-center gap-2"><i data-lucide="package" class="w-5 h-5"></i> 3.</p><p class="text-gray-300">Choose Package. Message: "Pick your poison."</p></div>
+      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg flex items-center gap-2"><i data-lucide="hash" class="w-5 h-5"></i> 4.</p><p class="text-gray-300">Set Quantity. Message: "Only ~$12 of $PUMPDIT to hijack the hot tab."</p></div>
+      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg flex items-center gap-2"><i data-lucide="receipt" class="w-5 h-5"></i> 5.</p><p class="text-gray-300">Place Order. Message: "Your order is live. Let the karma rain begin."</p></div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
   <section class="text-center px-6 section-block">
-    <h2 class="text-3xl mb-8 font-bold gradient-text glitch">📜 MemePaper</h2>
+    <h2 class="text-3xl mb-8 font-bold gradient-text glitch flex items-center justify-center gap-3"><i data-lucide="scroll-text" class="w-8 h-8"></i> MemePaper</h2>
     <div class="max-w-3xl mx-auto space-y-4 text-left text-lg">
-      <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch">🧠 Memetics over metrics</div>
-      <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch">🐸 Influence is the new liquidity</div>
-      <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch">🧵 Threads > whitepapers</div>
-      <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch">🔥 Shitpost-to-earn model pending</div>
-      <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch">👻 100% stealth launched by 4chan interns</div>
+      <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch flex items-center gap-3"><i data-lucide="brain-circuit" class="w-6 h-6 text-orange-400"></i> Memetics over metrics</div>
+      <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch flex items-center gap-3"><i data-lucide="activity" class="w-6 h-6 text-orange-400"></i> Influence is the new liquidity</div>
+      <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch flex items-center gap-3"><i data-lucide="message-square" class="w-6 h-6 text-orange-400"></i> Threads > whitepapers</div>
+      <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch flex items-center gap-3"><i data-lucide="flame" class="w-6 h-6 text-orange-400"></i> Shitpost-to-earn model pending</div>
+      <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch flex items-center gap-3"><i data-lucide="ghost" class="w-6 h-6 text-orange-400"></i> 100% stealth launched by 4chan interns</div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
   <section id="order-section" class="text-center px-6 section-block">
-    <h2 class="text-3xl mb-2 font-bold gradient-text glitch">🛠️ Pick Your Poison</h2>
+    <h2 class="text-3xl mb-2 font-bold gradient-text glitch flex items-center justify-center gap-3"><i data-lucide="wrench" class="w-8 h-8"></i> Pick Your Poison</h2>
     <p class="text-gray-400 mb-8">Want fake fans or real fire?</p>
     <div class="max-w-xl mx-auto bg-[#1a1823] border border-[#2C2A37] p-6 rounded-xl">
       <label class="block text-sm text-orange-400 mb-2 text-left">SERVICE:</label>
@@ -171,12 +182,14 @@
         <p class="text-xs mt-2 text-gray-500">"Use $PUMPDIT to hijack the hot tab."</p>
       </div>
 
-      <button onclick="placeOrder()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full btn-glow w-full">Place Order 🚀</button>
+      <button onclick="placeOrder()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full btn-glow w-full flex items-center justify-center gap-2">
+        Place Order <i data-lucide="rocket" class="w-5 h-5"></i>
+      </button>
     </div>
   </section>
 
   <section class="text-center px-6 section-block">
-      <h2 class="text-3xl mb-8 font-bold gradient-text">📡 Live Ops Tracker</h2>
+      <h2 class="text-3xl mb-8 font-bold gradient-text flex items-center justify-center gap-3"><i data-lucide="satellite-dish" class="w-8 h-8"></i> Live Ops Tracker</h2>
       <div class="max-w-3xl mx-auto space-y-3 text-xs text-left">
           <div class="bg-[#13111B] border border-[#2C2A37] p-3 rounded-lg flex justify-between items-center"><span>0x...a4f2 deployed <span class="text-orange-400">500 Upvotes</span> on r/CryptoMoonShots</span> <span class="text-green-400">+500</span></div>
           <div class="bg-[#13111B] border border-[#2C2A37] p-3 rounded-lg flex justify-between items-center"><span>0x...b1e8 deployed <span class="text-orange-400">100 AI Comments</span> on r/wallstreetbets</span> <span class="text-green-400">+100</span></div>
@@ -187,7 +200,7 @@
 
   <div id="orderModal" class="modal">
     <div class="modal-content">
-      <h2 class="text-xl text-orange-400 mb-4">🧾 Your Order Is Live</h2>
+      <h2 class="text-xl text-orange-400 mb-4 flex items-center justify-center gap-2"><i data-lucide="receipt" class="w-6 h-6"></i>Your Order Is Live</h2>
       <p class="text-white text-sm mb-4">Let the karma rain begin.</p>
       <div id="order-summary" class="text-left text-sm bg-[#0d0b14] p-4 rounded-lg mb-4"></div>
       <p id="tx-hash" class="text-green-400 text-xs break-all"></p>
@@ -201,12 +214,12 @@
   </div>
 
   <div id="easterEgg" style="display:none; position:fixed; bottom:20px; right:20px; font-size:14px; background:#13111B; padding:8px 12px; border:1px solid #ff4500; border-radius:6px; z-index:1000;">
-    🥚 Bonus: +10 Upvotes for pressing 'J'!
+    <span class="flex items-center gap-2"><i data-lucide="egg" class="w-4 h-4"></i>Bonus: +10 Upvotes!</span>
   </div>
 
   <footer class="text-center py-10 text-gray-500 text-xs border-t border-[#2C2A37] mt-8">
     <p>© 2025 $PUMPDIT | A protocol for weaponized attention. On-chain karma as a service.</p>
-    <p class="mt-2">Just pump. 🧃</p>
+    <p class="mt-2 flex items-center justify-center gap-2">Just pump. <i data-lucide="rocket" class="w-4 h-4"></i></p>
   </footer>
 
   <script>
@@ -219,6 +232,11 @@
 
     // --- DOM element variables ---
     let priceDisplay, chartCtx, walletModal, walletModalContent, orderModal;
+    
+    // --- ICON LOADER ---
+    function loadIcons() {
+      lucide.createIcons();
+    }
 
     // --- Functions for onclick handlers (must be global) ---
     function updateOrderTotal() {
@@ -268,6 +286,7 @@
         `;
         document.getElementById('tx-hash').textContent = `Fake TxHash: 0xPUMPED${Math.floor(Math.random() * 1e9).toString(16)}`;
         orderModal.style.display = 'flex';
+        loadIcons(); // Reload icons inside the modal
     }
 
     function closeOrderModal() {
@@ -278,14 +297,14 @@
         let content = '';
         if (walletConnected) {
             content = `
-                <h2 class="text-xl text-green-400 mb-4">✅ Wallet Connected</h2>
+                <h2 class="text-xl text-green-400 mb-4 flex items-center justify-center gap-2"><i data-lucide="check-circle" class="w-6 h-6"></i>Wallet Connected</h2>
                 <p class="text-white text-sm mb-2">Your address:</p>
                 <p class="text-green-400 text-xs break-all">${walletAddress}</p>
                 <button onclick="disconnectWallet()" class="mt-6 px-4 py-2 bg-red-500 text-white font-bold rounded-full">Disconnect</button>
             `;
         } else {
             content = `
-                <h2 class="text-xl text-orange-400 mb-4">🔐 Connect Wallet</h2>
+                <h2 class="text-xl text-orange-400 mb-4 flex items-center justify-center gap-2"><i data-lucide="lock" class="w-6 h-6"></i>Connect Wallet</h2>
                 <p class="text-white text-sm mb-6">Link up so we know you’re not a bot (yet).</p>
                 <button onclick="connectWallet()" class="w-full mb-4 px-4 py-3 bg-orange-500 text-white font-bold rounded-full btn-glow">Connect Now</button>
                 <button onclick="closeWalletModal()" class="w-full px-4 py-2 bg-gray-600 text-white font-bold rounded-full">Cancel</button>
@@ -293,6 +312,7 @@
         }
         if(walletModalContent) walletModalContent.innerHTML = content;
         if(walletModal) walletModal.style.display = 'flex';
+        loadIcons(); // Reload icons inside the modal
     }
 
     function closeWalletModal() {
@@ -365,6 +385,9 @@
             plugins: { legend: { display: false } } 
           }
         });
+        
+        // Initial call to render icons
+        loadIcons();
 
         // Add Event Listeners
         document.getElementById('orderService').addEventListener('change', updateOrderTotal);
@@ -373,6 +396,7 @@
           if (e.key.toLowerCase() === 'j') {
             const egg = document.getElementById('easterEgg');
             egg.style.display = 'block';
+            loadIcons(); // Load icon in the easter egg
             setTimeout(() => { egg.style.display = 'none' }, 3000);
           }
         });

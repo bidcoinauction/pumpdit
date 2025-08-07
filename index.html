@@ -197,11 +197,11 @@
       
       <label class="block text-sm text-orange-400 mb-2 text-left">SERVICE:</label>
       <select id="orderService" class="w-full p-3 mb-4 rounded bg-[#13111B] text-white border border-gray-600 text-sm">
-        <option value="1.50">100 Upvotes (The Spark)</option>
-        <option value="6.00">500 Upvotes (Trending Push)</option>
-        <option value="9.00">100 AI Comments (Narrative Control)</option>
-        <option value="16.00">1000 Subscribers (Cult Building)</option>
-        <option value="22.00">Custom Hype Thread (The Nuclear Option)</option>
+        <option value="2.50">100 Upvotes (The Spark)</option>
+        <option value="8.50">500 Upvotes (Trending Push)</option>
+        <option value="12.00">100 AI Comments (Narrative Control)</option>
+        <option value="22.00">1000 Subscribers (Cult Building)</option>
+        <option value="35.00">Custom Hype Thread (The Nuclear Option)</option>
       </select>
       
       <label class="block text-sm text-orange-400 mb-2 text-left">LINK:</label>
@@ -311,8 +311,6 @@
 
         opsContainer.prepend(opElement);
         setTimeout(() => opElement.classList.remove('opacity-0', '-translate-y-4'), 100);
-
-        // --- REMOVED: The cutoff for the ops feed has been removed as per the request. ---
     }
 
     // --- ON-SCROLL ANIMATION ---
@@ -339,10 +337,8 @@
 
     function updateLivePrice() {
       const now = Date.now();
-      if (now - priceTimestamp >= 1500) { // Update interval
-        // UPDATED: Increased volatility for a more dynamic chart
+      if (now - priceTimestamp >= 1500) {
         lockedPrice = lockedPrice * (1 + (Math.random() - 0.5) * 0.1); 
-        // Ensure price doesn't go negative or too close to zero
         if (lockedPrice < 0.000001) {
             lockedPrice = 0.000001;
         }
@@ -354,7 +350,7 @@
       if (priceChart) {
           const data = priceChart.data.datasets[0].data;
           data.push(lockedPrice);
-          if (data.length > 40) data.shift(); // Keep 40 data points
+          if (data.length > 40) data.shift();
           priceChart.update('quiet');
       }
       updateOrderTotal();
@@ -365,7 +361,6 @@
             openWalletModal();
             return;
         }
-        // NEW: Get the value from the link input
         const postLinkInput = document.getElementById('postLink');
         const postLink = postLinkInput.value;
 
@@ -380,7 +375,6 @@
         const qty = document.getElementById('orderQty').value;
         const totalPumpdit = document.getElementById('orderTotal').textContent;
 
-        // UPDATED: Include the link in the order summary
         document.getElementById('order-summary').innerHTML = `
             <p class="mb-2"><strong>Service:</strong> <span class="text-orange-400">${serviceText}</span></p>
             <p class="mb-2"><strong>Target Link:</strong> <span class="text-orange-400 break-all text-xs">${postLink}</span></p>
@@ -440,7 +434,6 @@
 
     // --- Initialization on page load ---
     window.onload = () => {
-        // Assign DOM elements
         priceDisplay = document.getElementById('pumpdit-price');
         chartCtx = document.getElementById('priceChart').getContext('2d');
         walletModal = document.getElementById('walletModal');
@@ -448,7 +441,6 @@
         orderModal = document.getElementById('orderModal');
         opsContainer = document.getElementById('ops-container');
 
-        // Initialize Chart
         priceChart = new Chart(chartCtx, {
           type: 'line', data: { labels: Array(40).fill(''), datasets: [{ label: '$PUMPDIT', data: Array(40).fill(lockedPrice), borderColor: '#ff8717', backgroundColor: 'rgba(255,135,23,0.1)', tension: 0.4, borderWidth: 2, pointRadius: 0, }] },
           options: { scales: { y: { beginAtZero: false, ticks: { font: { size: 8, family: "'Press Start 2P', cursive" }, color: '#9ca3af' } }, x: { ticks: { display: false } } }, plugins: { legend: { display: false } } }
@@ -458,7 +450,6 @@
         const hiddenElements = document.querySelectorAll('.section-hidden');
         hiddenElements.forEach((el) => observer.observe(el));
         
-        // Populate initial ops
         for(let i = 0; i < 3; i++) { createRandomOp(); }
         setInterval(createRandomOp, 4000);
 

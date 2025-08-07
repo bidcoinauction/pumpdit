@@ -311,6 +311,12 @@
 
         opsContainer.prepend(opElement);
         setTimeout(() => opElement.classList.remove('opacity-0', '-translate-y-4'), 100);
+
+        // UPDATED: Re-implement the cutoff to keep the list to the 7 most recent ops.
+        if (opsContainer.children.length > 7) {
+            opsContainer.lastChild.classList.add('opacity-0');
+            setTimeout(() => opsContainer.removeChild(opsContainer.lastChild), 500);
+        }
     }
 
     // --- ON-SCROLL ANIMATION ---

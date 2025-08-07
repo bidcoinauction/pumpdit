@@ -14,6 +14,7 @@
       font-family: 'Press Start 2P', cursive;
       background-image: radial-gradient(circle at center, #1a1823 0%, #0d0b14 100%);
       color: white;
+      overflow-x: hidden; /* Prevent horizontal scroll from animations */
     }
     html { scroll-behavior: smooth; }
     h1, h2, h3, p, li, button, a, span, label, select, input, option { font-family: 'Press Start 2P', cursive; }
@@ -36,9 +37,13 @@
     }
     .btn-glow {
       box-shadow: 0 0 10px #ff4500, 0 0 30px #ff8717;
-      transition: transform 0.2s ease-in-out;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
     .btn-glow:hover { transform: scale(1.05); }
+    .btn-glow:active {
+        transform: scale(0.98);
+        box-shadow: 0 0 5px #ff4500, 0 0 15px #ff8717;
+    }
     .section-divider {
       height: 2px;
       background: linear-gradient(to right, #2C2A37, #ff4500, #2C2A37);
@@ -63,13 +68,15 @@
         cursor: pointer;
         border: 1px solid #ff4500;
     }
-    /* Helper class to make icons align with H2 text */
-    .h2-icon {
-        display: inline-block;
-        width: 1em;
-        height: 1em;
-        margin-right: 0.5em;
-        vertical-align: -0.125em;
+    /* Styles for On-Scroll Animations */
+    .section-hidden {
+        opacity: 0;
+        transform: translateY(2rem);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .section-visible {
+        opacity: 1;
+        transform: translateY(0);
     }
   </style>
 </head>
@@ -108,7 +115,7 @@
   
   <div class="section-divider"></div>
 
-  <section id="buy-section" class="text-center px-6 section-block">
+  <section id="buy-section" class="text-center px-6 section-block section-hidden">
     <h2 class="text-3xl mb-8 font-bold gradient-text glitch flex items-center justify-center gap-3"><i data-lucide="archive" class="w-8 h-8"></i> Get Your Ammo</h2>
     <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-left text-sm">
         <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]">
@@ -121,7 +128,7 @@
         </div>
         <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]">
             <p class="text-orange-400 mb-2 text-lg">3. Swap for $PUMPDIT</p>
-            <p class="text-gray-300">Go to Raydium or Jupiter and paste the token address to swap your SOL.</p>
+            <p class="text-gray-300">Go to <a href="https://raydium.io/swap/" target="_blank" class="text-orange-400 underline hover:text-white">Raydium</a> or <a href="https://jup.ag/swap/" target="_blank" class="text-orange-400 underline hover:text-white">Jupiter</a> and paste the token address to swap your SOL.</p>
         </div>
     </div>
     <div class="mt-8 bg-[#13111B] p-4 rounded-lg border border-[#2C2A37] max-w-3xl mx-auto">
@@ -135,7 +142,7 @@
   
   <div class="section-divider"></div>
 
-  <section class="text-center px-6 section-block">
+  <section class="text-center px-6 section-block section-hidden">
      <h2 class="text-3xl mb-8 font-bold gradient-text glitch flex items-center justify-center gap-3"><i data-lucide="compass" class="w-8 h-8"></i> Functional Flow</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto text-sm">
       <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg flex items-center gap-2"><i data-lucide="play-circle" class="w-5 h-5"></i> 1.</p><p class="text-gray-300">Land on site. Message: "Let’s rig the Reddit algo."</p></div>
@@ -148,7 +155,7 @@
 
   <div class="section-divider"></div>
 
-  <section class="text-center px-6 section-block">
+  <section class="text-center px-6 section-block section-hidden">
     <h2 class="text-3xl mb-8 font-bold gradient-text glitch flex items-center justify-center gap-3"><i data-lucide="scroll-text" class="w-8 h-8"></i> MemePaper</h2>
     <div class="max-w-3xl mx-auto space-y-4 text-left text-lg">
       <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch flex items-center gap-3"><i data-lucide="brain-circuit" class="w-6 h-6 text-orange-400"></i> Memetics over metrics</div>
@@ -158,10 +165,33 @@
       <div class="bg-[#13111B] border border-[#2C2A37] px-6 py-4 rounded-lg glitch flex items-center gap-3"><i data-lucide="ghost" class="w-6 h-6 text-orange-400"></i> 100% stealth launched by 4chan interns</div>
     </div>
   </section>
+  
+  <div class="section-divider"></div>
+
+  <section class="text-center px-6 section-block section-hidden">
+    <h2 class="text-3xl mb-8 font-bold gradient-text glitch flex items-center justify-center gap-3">
+      <i data-lucide="pie-chart" class="w-8 h-8"></i>
+      Tokenomics
+    </h2>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center text-sm">
+      <div class="bg-[#13111B] p-6 rounded-lg border border-[#2C2A37]">
+          <p class="text-3xl font-bold text-orange-400">1B</p>
+          <p class="text-gray-400 mt-2">Total Supply</p>
+      </div>
+      <div class="bg-[#13111B] p-6 rounded-lg border border-[#2C2A37]">
+          <p class="text-3xl font-bold text-green-400">0/0</p>
+          <p class="text-gray-400 mt-2">Buy/Sell Tax</p>
+      </div>
+      <div class="bg-[#13111B] p-6 rounded-lg border border-[#2C2A37]">
+          <p class="text-3xl font-bold text-red-500">BURNED</p>
+          <p class="text-gray-400 mt-2">LP Tokens</p>
+      </div>
+    </div>
+  </section>
 
   <div class="section-divider"></div>
 
-  <section id="order-section" class="text-center px-6 section-block">
+  <section id="order-section" class="text-center px-6 section-block section-hidden">
     <h2 class="text-3xl mb-2 font-bold gradient-text glitch flex items-center justify-center gap-3"><i data-lucide="wrench" class="w-8 h-8"></i> Pick Your Poison</h2>
     <p class="text-gray-400 mb-8">Want fake fans or real fire?</p>
     <div class="max-w-xl mx-auto bg-[#1a1823] border border-[#2C2A37] p-6 rounded-xl">
@@ -188,14 +218,28 @@
     </div>
   </section>
 
-  <section class="text-center px-6 section-block">
+  <section class="text-center px-6 section-block section-hidden">
       <h2 class="text-3xl mb-8 font-bold gradient-text flex items-center justify-center gap-3"><i data-lucide="satellite-dish" class="w-8 h-8"></i> Live Ops Tracker</h2>
-      <div class="max-w-3xl mx-auto space-y-3 text-xs text-left">
-          <div class="bg-[#13111B] border border-[#2C2A37] p-3 rounded-lg flex justify-between items-center"><span>0x...a4f2 deployed <span class="text-orange-400">500 Upvotes</span> on r/CryptoMoonShots</span> <span class="text-green-400">+500</span></div>
-          <div class="bg-[#13111B] border border-[#2C2A37] p-3 rounded-lg flex justify-between items-center"><span>0x...b1e8 deployed <span class="text-orange-400">100 AI Comments</span> on r/wallstreetbets</span> <span class="text-green-400">+100</span></div>
-          <div class="bg-[#13111B] border border-[#2C2A37] p-3 rounded-lg flex justify-between items-center"><span>0x...c5d9 deployed <span class="text-orange-400">Cult Building</span> on r/solana</span> <span class="text-green-400">+1000</span></div>
-      </div>
-      <p class="text-gray-500 text-xs mt-4">Track your ops like a Reddit cartel war room. (Coming Soon)</p>
+      <div id="ops-container" class="max-w-3xl mx-auto space-y-3 text-xs text-left">
+        </div>
+  </section>
+
+  <div class="section-divider"></div>
+  
+  <section class="text-center px-6 section-block section-hidden">
+    <h2 class="text-3xl mb-8 font-bold gradient-text glitch flex items-center justify-center gap-3">
+      <i data-lucide="users" class="w-8 h-8"></i>
+      Join The Uprising
+    </h2>
+    <p class="text-gray-400 mb-8 max-w-xl mx-auto">Influence is a team sport. Find us on the front lines.</p>
+    <div class="flex justify-center items-center gap-6">
+      <a href="#" target="_blank" class="text-orange-400 hover:text-white transition-colors" aria-label="X/Twitter">
+        <svg class="w-10 h-10" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>X</title><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zm-1.61 19.713h2.436L4.178 2.547H1.641l15.65 18.319z"/></svg>
+      </a>
+      <a href="#" target="_blank" class="text-orange-400 hover:text-white transition-colors" aria-label="Telegram">
+          <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944,0 C5.356,0 0,5.356 0,11.944 C0,18.531 5.356,23.888 11.944,23.888 C18.531,23.888 23.888,18.531 23.888,11.944 C23.888,5.356 18.531,0 11.944,0 Z M18.118,8.113 C17.843,9.519 16.52,15.803 15.938,18.55 C15.66,19.928 14.82,20.285 14.045,19.838 C12.83,19.125 11.884,18.393 10.97,17.703 C9.96,16.942 9.25,16.485 9.065,16.149 C8.879,15.813 8.221,15.356 8.221,14.638 C8.221,13.831 8.793,13.475 9.365,12.903 C9.938,12.331 10.643,11.668 11.438,10.925 C12.212,10.203 12.988,9.48 13.118,9.25 C13.248,9.02 13.356,8.663 13.16,8.445 C12.964,8.228 12.638,8.356 12.43,8.475 C12.221,8.594 10.43,9.663 7.938,11.243 C7.545,11.5 7.153,11.625 6.76,11.625 C6.273,11.625 5.5,11.453 4.938,11.28 C4.26,11.063 3.653,10.913 3.8,10.138 C3.893,9.663 4.43,9.228 5.43,8.835 C8.303,7.703 10.545,6.77 12.118,6.163 C15.653,4.83 17.03,4.438 18.118,8.113 Z"/></svg>
+      </a>
+    </div>
   </section>
 
   <div id="orderModal" class="modal">
@@ -231,12 +275,54 @@
     let walletAddress = '';
 
     // --- DOM element variables ---
-    let priceDisplay, chartCtx, walletModal, walletModalContent, orderModal;
+    let priceDisplay, chartCtx, walletModal, walletModalContent, orderModal, opsContainer;
     
     // --- ICON LOADER ---
     function loadIcons() {
       lucide.createIcons();
     }
+
+    // --- LIVE OPS TRACKER ---
+    const sampleServices = [
+        { name: '500 Upvotes', class: 'text-orange-400', value: '+500' },
+        { name: '100 AI Comments', class: 'text-orange-400', value: '+100' },
+        { name: 'Cult Building', class: 'text-orange-400', value: '+1000' },
+        { name: 'The Spark', class: 'text-orange-400', value: '+100' },
+        { name: 'Trending Push', class: 'text-orange-400', value: '+500' }
+    ];
+    const sampleSubreddits = ['r/CryptoMoonShots', 'r/wallstreetbets', 'r/solana', 'r/memes', 'r/satoshistreetbets'];
+
+    function createRandomOp() {
+        if (!opsContainer) return;
+
+        const randomAddress = `0x...${[...Array(4)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')}`;
+        const randomService = sampleServices[Math.floor(Math.random() * sampleServices.length)];
+        const randomSubreddit = sampleSubreddits[Math.floor(Math.random() * sampleSubreddits.length)];
+
+        const opElement = document.createElement('div');
+        opElement.className = 'bg-[#13111B] border border-[#2C2A37] p-3 rounded-lg flex justify-between items-center transition-all duration-500 opacity-0 -translate-y-4';
+        opElement.innerHTML = `
+            <span>${randomAddress} deployed <span class="${randomService.class}">${randomService.name}</span> on ${randomSubreddit}</span>
+            <span class="text-green-400">${randomService.value}</span>
+        `;
+
+        opsContainer.prepend(opElement);
+        setTimeout(() => opElement.classList.remove('opacity-0', '-translate-y-4'), 100);
+
+        if (opsContainer.children.length > 5) {
+            opsContainer.lastChild.classList.add('opacity-0');
+            setTimeout(() => opsContainer.removeChild(opsContainer.lastChild), 500);
+        }
+    }
+
+    // --- ON-SCROLL ANIMATION ---
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-visible');
+            }
+        });
+    });
 
     // --- Functions for onclick handlers (must be global) ---
     function updateOrderTotal() {
@@ -286,7 +372,7 @@
         `;
         document.getElementById('tx-hash').textContent = `Fake TxHash: 0xPUMPED${Math.floor(Math.random() * 1e9).toString(16)}`;
         orderModal.style.display = 'flex';
-        loadIcons(); // Reload icons inside the modal
+        loadIcons();
     }
 
     function closeOrderModal() {
@@ -296,23 +382,13 @@
     function openWalletModal() {
         let content = '';
         if (walletConnected) {
-            content = `
-                <h2 class="text-xl text-green-400 mb-4 flex items-center justify-center gap-2"><i data-lucide="check-circle" class="w-6 h-6"></i>Wallet Connected</h2>
-                <p class="text-white text-sm mb-2">Your address:</p>
-                <p class="text-green-400 text-xs break-all">${walletAddress}</p>
-                <button onclick="disconnectWallet()" class="mt-6 px-4 py-2 bg-red-500 text-white font-bold rounded-full">Disconnect</button>
-            `;
+            content = `<h2 class="text-xl text-green-400 mb-4 flex items-center justify-center gap-2"><i data-lucide="check-circle" class="w-6 h-6"></i>Wallet Connected</h2><p class="text-white text-sm mb-2">Your address:</p><p class="text-green-400 text-xs break-all">${walletAddress}</p><button onclick="disconnectWallet()" class="mt-6 px-4 py-2 bg-red-500 text-white font-bold rounded-full">Disconnect</button>`;
         } else {
-            content = `
-                <h2 class="text-xl text-orange-400 mb-4 flex items-center justify-center gap-2"><i data-lucide="lock" class="w-6 h-6"></i>Connect Wallet</h2>
-                <p class="text-white text-sm mb-6">Link up so we know you’re not a bot (yet).</p>
-                <button onclick="connectWallet()" class="w-full mb-4 px-4 py-3 bg-orange-500 text-white font-bold rounded-full btn-glow">Connect Now</button>
-                <button onclick="closeWalletModal()" class="w-full px-4 py-2 bg-gray-600 text-white font-bold rounded-full">Cancel</button>
-            `;
+            content = `<h2 class="text-xl text-orange-400 mb-4 flex items-center justify-center gap-2"><i data-lucide="lock" class="w-6 h-6"></i>Connect Wallet</h2><p class="text-white text-sm mb-6">Link up so we know you’re not a bot (yet).</p><button onclick="connectWallet()" class="w-full mb-4 px-4 py-3 bg-orange-500 text-white font-bold rounded-full btn-glow">Connect Now</button><button onclick="closeWalletModal()" class="w-full px-4 py-2 bg-gray-600 text-white font-bold rounded-full">Cancel</button>`;
         }
         if(walletModalContent) walletModalContent.innerHTML = content;
         if(walletModal) walletModal.style.display = 'flex';
-        loadIcons(); // Reload icons inside the modal
+        loadIcons();
     }
 
     function closeWalletModal() {
@@ -338,14 +414,11 @@
     }
 
     function copyContract() {
-        const contractInput = document.getElementById('contractAddress');
-        navigator.clipboard.writeText(contractInput.value).then(() => {
+        navigator.clipboard.writeText(document.getElementById('contractAddress').value).then(() => {
             const copyBtn = document.getElementById('copyBtn');
             copyBtn.textContent = 'COPIED!';
             setTimeout(() => { copyBtn.textContent = 'COPY'; }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-        });
+        }).catch(err => console.error('Failed to copy text: ', err));
     }
 
     // --- Initialization on page load ---
@@ -356,38 +429,20 @@
         walletModal = document.getElementById('walletModal');
         walletModalContent = document.getElementById('wallet-modal-content');
         orderModal = document.getElementById('orderModal');
+        opsContainer = document.getElementById('ops-container');
 
         // Initialize Chart
         priceChart = new Chart(chartCtx, {
-          type: 'line',
-          data: {
-            labels: Array(20).fill(''),
-            datasets: [{
-              label: '$PUMPDIT',
-              data: Array(20).fill(lockedPrice),
-              borderColor: '#ff8717',
-              backgroundColor: 'rgba(255,135,23,0.1)',
-              tension: 0.3,
-              borderWidth: 2,
-              pointRadius: 0,
-            }]
-          },
-          options: {
-            scales: { 
-                y: { 
-                    beginAtZero: false, 
-                    ticks: { font: { size: 8, family: "'Press Start 2P', cursive" }, color: '#9ca3af' } 
-                },
-                x: {
-                    ticks: { display: false }
-                }
-            }, 
-            plugins: { legend: { display: false } } 
-          }
+          type: 'line', data: { labels: Array(20).fill(''), datasets: [{ label: '$PUMPDIT', data: Array(20).fill(lockedPrice), borderColor: '#ff8717', backgroundColor: 'rgba(255,135,23,0.1)', tension: 0.3, borderWidth: 2, pointRadius: 0, }] },
+          options: { scales: { y: { beginAtZero: false, ticks: { font: { size: 8, family: "'Press Start 2P', cursive" }, color: '#9ca3af' } }, x: { ticks: { display: false } } }, plugins: { legend: { display: false } } }
         });
         
-        // Initial call to render icons
+        // Initial call to render icons & start animations
         loadIcons();
+        const hiddenElements = document.querySelectorAll('.section-hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+        createRandomOp(); // Create first op immediately
+        setInterval(createRandomOp, 4000); // Create a new op every 4 seconds
 
         // Add Event Listeners
         document.getElementById('orderService').addEventListener('change', updateOrderTotal);
@@ -396,7 +451,7 @@
           if (e.key.toLowerCase() === 'j') {
             const egg = document.getElementById('easterEgg');
             egg.style.display = 'block';
-            loadIcons(); // Load icon in the easter egg
+            loadIcons();
             setTimeout(() => { egg.style.display = 'none' }, 3000);
           }
         });

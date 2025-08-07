@@ -1,9 +1,24 @@
+Of course. Here is a single, refined HTML file that combines the best elements of both versions you provided.
+
+This new version incorporates the superior structure and critical "How to Buy" section from the second file while re-integrating the excellent live price chart and "Functional Flow" section from the first file. The result is a more complete and user-friendly landing page that maintains the edgy, retro aesthetic.
+
+### Key Improvements in the Combined Version:
+
+  * **Complete User Journey:** The page now follows a logical flow: See the price chart -\> Understand the concept -\> Learn how to buy the token -\> See how the service works -\> Place an order.
+  * **Stronger Hero Section:** It uses the punchier "Weaponized Influence" headline from the first file but keeps the logo and clearer button structure from the second.
+  * **Live Price Chart:** The dynamic chart from the first version is placed prominently at the top for immediate engagement.
+  * **"How It Works" Reinstated:** The clear, 5-step "Functional Flow" section is included to explain the service's value proposition.
+  * **Robust JavaScript:** It uses the better-structured `window.onload` pattern from the second file to ensure all elements are loaded before scripts run, preventing errors.
+
+-----
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>$PUMPDIT - The Currency of Reddit</title>
+  <title>$PUMPDIT - Weaponized Influence</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -66,23 +81,25 @@
 </head>
 <body class="antialiased">
 
-  <!-- Header with Wallet Status -->
-  <header class="w-full bg-[#1a1823] text-orange-400 text-xs text-center py-2 border-b border-[#2C2A37] flex justify-between items-center px-4">
+  <header class="w-full bg-[#1a1823] text-orange-400 text-xs text-center py-2 border-b border-[#2C2A37] flex justify-between items-center px-4 sticky top-0 z-50">
     <div class="flex items-center gap-2">
-        <img src="https://updatedcardscript.standard.us-east-1.oortstorages.com/ChatGPT%20Image%20Aug%207%2C%202025%2C%2001_32_31%20PM.png" alt="Pumpdit Logo" class="h-6 w-6 rounded-full" onerror="this.style.display='none'">
+        <img src="https://i.imgur.com/uN15N6p.png" alt="Pumpdit Logo" class="h-6 w-6 rounded-full">
         <span>Live $PUMPDIT: <span id="pumpdit-price">$0.0000123</span></span>
     </div>
-    <div id="wallet-status" class="hidden md:block">
+    <div id="wallet-status">
         <button onclick="openWalletModal()" id="connect-wallet-btn-header" class="bg-orange-600/50 text-white text-[10px] py-1 px-3 rounded-md hover:bg-orange-600/80">Connect Wallet</button>
         <span id="wallet-address" class="hidden text-green-400"></span>
     </div>
   </header>
 
-  <!-- Hero -->
+  <div class="px-4 pt-6 max-w-xl mx-auto">
+    <canvas id="priceChart" height="120"></canvas>
+  </div>
+
   <section class="text-center px-6 section-block">
-     <img src="https://updatedcardscript.standard.us-east-1.oortstorages.com/ChatGPT%20Image%20Aug%207%2C%202025%2C%2001_32_31%20PM.png" alt="Pumpdit Logo" class="h-24 w-24 mx-auto mb-6 rounded-full shadow-lg" onerror="this.style.display='none'">
-     <h1 class="text-3xl md:text-4xl mb-2 font-bold gradient-text">$PUMPDIT: The Currency of Reddit.</h1>
-     <p class="text-lg text-gray-300 max-w-2xl mx-auto glitch">Weaponized Influence, On-Chain.</p>
+     <img src="https://i.imgur.com/uN15N6p.png" alt="Pumpdit Logo" class="h-24 w-24 mx-auto mb-6 rounded-full shadow-lg">
+     <h1 class="text-3xl md:text-4xl mb-4 font-bold gradient-text glitch">Weaponized Influence.</h1>
+     <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">The memecoin that turns Reddit clout into currency. Buy karma. Push narratives. Dominate subcultures.</p>
      <p class="mt-6 text-sm text-gray-400 max-w-xl mx-auto">"You ever wish your post got 10k upvotes without begging mods or farming alts? That’s what $PUMPDIT is for.”</p>
     <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
       <button onclick="document.getElementById('buy-section').scrollIntoView();" class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full btn-glow text-base">
@@ -96,7 +113,6 @@
   
   <div class="section-divider"></div>
 
-  <!-- How to Buy Section -->
   <section id="buy-section" class="text-center px-6 section-block">
     <h2 class="text-3xl mb-8 font-bold gradient-text glitch">💰 Get Your Ammo</h2>
     <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-left text-sm">
@@ -106,11 +122,11 @@
         </div>
         <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]">
             <p class="text-orange-400 mb-2 text-lg">2. Get SOL</p>
-            <p class="text-gray-300">Buy Solana (SOL) on an exchange like Coinbase or Binance and send it to your wallet.</p>
+            <p class="text-gray-300">Buy Solana (SOL) on an exchange like Coinbase and send it to your wallet.</p>
         </div>
         <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]">
             <p class="text-orange-400 mb-2 text-lg">3. Swap for $PUMPDIT</p>
-            <p class="text-gray-300">Go to Raydium or Jupiter and paste the token address to swap your SOL for $PUMPDIT.</p>
+            <p class="text-gray-300">Go to Raydium or Jupiter and paste the token address to swap your SOL.</p>
         </div>
     </div>
     <div class="mt-8 bg-[#13111B] p-4 rounded-lg border border-[#2C2A37] max-w-3xl mx-auto">
@@ -121,10 +137,22 @@
         </div>
     </div>
   </section>
+  
+  <div class="section-divider"></div>
+
+  <section class="text-center px-6 section-block">
+     <h2 class="text-3xl mb-8 font-bold gradient-text glitch">🧭 Functional Flow</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto text-sm">
+      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg">🟢 1.</p><p class="text-gray-300">Land on site. Message: "Let’s rig the Reddit algo."</p></div>
+      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg">🔐 2.</p><p class="text-gray-300">Connect Wallet. Message: "Link up so we know you’re not a bot (yet)."</p></div>
+      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg">📦 3.</p><p class="text-gray-300">Choose Package. Message: "Pick your poison. Want fake fans or real fire?"</p></div>
+      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg">🔢 4.</p><p class="text-gray-300">Set Quantity. Message: "Only ~$12 of $PUMPDIT to hijack the hot tab."</p></div>
+      <div class="bg-[#13111B] p-4 rounded-lg border border-[#2C2A37]"><p class="text-orange-400 mb-2 text-lg">🧾 5.</p><p class="text-gray-300">Place Order. Message: "Your order is live. Let the karma rain begin."</p></div>
+    </div>
+  </section>
 
   <div class="section-divider"></div>
 
-  <!-- MemePaper -->
   <section class="text-center px-6 section-block">
     <h2 class="text-3xl mb-8 font-bold gradient-text glitch">📜 MemePaper</h2>
     <div class="max-w-3xl mx-auto space-y-4 text-left text-lg">
@@ -138,7 +166,6 @@
 
   <div class="section-divider"></div>
 
-  <!-- Service Order Calculator -->
   <section id="order-section" class="text-center px-6 section-block">
     <h2 class="text-3xl mb-2 font-bold gradient-text glitch">🛠️ Pick Your Poison</h2>
     <p class="text-gray-400 mb-8">Want fake fans or real fire?</p>
@@ -164,7 +191,6 @@
     </div>
   </section>
 
-  <!-- Recent Deployments -->
   <section class="text-center px-6 section-block">
       <h2 class="text-3xl mb-8 font-bold gradient-text">📡 Live Ops Tracker</h2>
       <div class="max-w-3xl mx-auto space-y-3 text-xs text-left">
@@ -175,35 +201,30 @@
       <p class="text-gray-500 text-xs mt-4">Track your ops like a Reddit cartel war room. (Coming Soon)</p>
   </section>
 
-  <!-- Modals -->
   <div id="orderModal" class="modal">
     <div class="modal-content">
       <h2 class="text-xl text-orange-400 mb-4">🧾 Your Order Is Live</h2>
       <p class="text-white text-sm mb-4">Let the karma rain begin.</p>
       <div id="order-summary" class="text-left text-sm bg-[#0d0b14] p-4 rounded-lg mb-4"></div>
-      <p class="text-green-400 text-xs">Fake TxHash: 0xPUMPED` + Math.floor(Math.random() * 1e9).toString(16) + `</p>
+      <p id="tx-hash" class="text-green-400 text-xs break-all"></p>
       <button onclick="closeOrderModal()" class="mt-6 px-4 py-2 bg-orange-500 text-white font-bold rounded-full">Roger That</button>
     </div>
   </div>
 
   <div id="walletModal" class="modal">
     <div class="modal-content" id="wallet-modal-content">
-      <!-- This content will be replaced by JS -->
-    </div>
+      </div>
   </div>
 
-  <!-- Easter Egg -->
   <div id="easterEgg" style="display:none; position:fixed; bottom:20px; right:20px; font-size:14px; background:#13111B; padding:8px 12px; border:1px solid #ff4500; border-radius:6px; z-index:1000;">
     🥚 Bonus: +10 Upvotes for pressing 'J'!
   </div>
 
-  <!-- Footer -->
   <footer class="text-center py-10 text-gray-500 text-xs border-t border-[#2C2A37] mt-8">
     <p>© 2025 $PUMPDIT | A protocol for weaponized attention. On-chain karma as a service.</p>
     <p class="mt-2">Just pump. 🧃</p>
   </footer>
 
-  <!-- JS -->
   <script>
     // --- Global variables ---
     let priceChart;
@@ -217,7 +238,7 @@
 
     // --- Functions for onclick handlers (must be global) ---
     function updateOrderTotal() {
-      if (!document.getElementById('orderService')) return; // Guard against elements not ready
+      if (!document.getElementById('orderService')) return;
       const serviceSelect = document.getElementById('orderService');
       const serviceCostUSD = parseFloat(serviceSelect.value);
       const qty = parseInt(document.getElementById('orderQty').value) || 1;
@@ -261,6 +282,7 @@
             <p><strong>Quantity:</strong> <span class="text-orange-400">${qty}</span></p>
             <p><strong>Total Cost:</strong> <span class="text-green-400">${totalPumpdit} $PUMPDIT</span></p>
         `;
+        document.getElementById('tx-hash').textContent = `Fake TxHash: 0xPUMPED${Math.floor(Math.random() * 1e9).toString(16)}`;
         orderModal.style.display = 'flex';
     }
 
@@ -300,7 +322,6 @@
         document.getElementById('wallet-address').textContent = shortAddress;
         document.getElementById('wallet-address').classList.remove('hidden');
         document.getElementById('connect-wallet-btn-header').classList.add('hidden');
-        document.getElementById('wallet-status').classList.remove('hidden');
         closeWalletModal();
     }
 
@@ -314,17 +335,13 @@
 
     function copyContract() {
         const contractInput = document.getElementById('contractAddress');
-        contractInput.select();
-        contractInput.setSelectionRange(0, 99999);
-        try {
-            document.execCommand('copy');
+        navigator.clipboard.writeText(contractInput.value).then(() => {
             const copyBtn = document.getElementById('copyBtn');
             copyBtn.textContent = 'COPIED!';
             setTimeout(() => { copyBtn.textContent = 'COPY'; }, 2000);
-        } catch (err) {
+        }).catch(err => {
             console.error('Failed to copy text: ', err);
-        }
-        window.getSelection().removeAllRanges();
+        });
     }
 
     // --- Initialization on page load ---

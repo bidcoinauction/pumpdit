@@ -1,363 +1,504 @@
 <!DOCTYPE html>
-<html lang="en"> <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>$PUMPDIT - Weaponized Influence</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
-    :root {
-      --glitch-1-dark: red; --glitch-2-dark: blue; --glitch-3-dark: lime; --glitch-4-dark: magenta;
-      --glitch-1-light: lime; --glitch-2-light: green; --glitch-3-light: #ffffff; --glitch-4-light: darkgreen;
-    }
-    body {
-      background-color: #0d0b14;
-      color: white;
-      font-family: 'Press Start 2P', cursive;
-      overflow-x: hidden;
-    }
-    html.light body {
-      background-color: #000000;
-      color: #00ff00;
-    }
-    html { scroll-behavior: smooth; }
-    h1, h2, h3, p, li, button, a, span, label, select, input, option { font-family: 'Press Start 2P', cursive; }
-    
-    @keyframes glitch-anim {
-      0% { text-shadow: 2px 0 var(--glitch-1-dark), -2px 0 var(--glitch-2-dark); }
-      50% { text-shadow: -2px -2px var(--glitch-3-dark), 2px 2px var(--glitch-4-dark); }
-      100% { text-shadow: 2px 0 var(--glitch-1-dark), -2px 0 var(--glitch-2-dark); }
-    }
-    html.light @keyframes glitch-anim {
-      0% { text-shadow: 2px 0 var(--glitch-1-light), -2px 0 var(--glitch-2-light); }
-      50% { text-shadow: -2px -2px var(--glitch-3-light), 2px 2px var(--glitch-4-light); }
-      100% { text-shadow: 2px 0 var(--glitch-1-light), -2px 0 var(--glitch-2-light); }
-    }
-    .glitch-effect:hover { animation: glitch-anim 1s infinite; }
-    
-    #hero-headline { border-right: 0.15em solid #ff4500; white-space: nowrap; overflow: hidden; }
-    html.light #hero-headline { border-right-color: #00ff00; }
-    .typing-anim { animation: typing 2s steps(20, end), blink-caret .75s step-end infinite; }
-    @keyframes typing { from { width: 0 } to { width: 100% } }
-    @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #ff4500; } }
-    html.light @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #00ff00; } }
-    
-    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 1000; }
-    .btn-glow { box-shadow: 0 0 10px #ff4500, 0 0 30px #ff8717; transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; }
-    html.light .btn-glow { box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; }
-    .btn-glow:hover { transform: scale(1.05); }
-    .btn-glow:active { transform: scale(0.98); }
-    .section-divider { height: 2px; margin: 6rem auto; width: 80%; background: linear-gradient(to right, #2C2A37, #ff4500, #2C2A37); }
-    html.light .section-divider { background: linear-gradient(to right, #00ff00, #ffffff, #00ff00); }
-    .section-block { padding-top: 4rem; padding-bottom: 4rem; }
-    .gradient-text { background: -webkit-linear-gradient(#ff8717, #ff4500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    html.light .gradient-text { background: none; -webkit-text-fill-color: #00ff00; }
-    .section-hidden { opacity: 0; transform: translateY(2rem); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-    .section-visible { opacity: 1; transform: translateY(0); }
-    .price-flash-up { transition: color 0.1s; color: #10B981 !important; }
-    .price-flash-down { transition: color 0.1s; color: #EF4444 !important; }
-    html.light .price-flash-up, html.light .price-flash-down { color: #000000 !important; background-color: #00ff00; }
-  </style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialPump - Weaponized Social Influence | Crypto SMM Services</title>
+    <meta name="description" content="Deploy social media warfare. Pump your crypto presence with weaponized influence on CoinMarketCap, OpenSea, Twitter, and beyond.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glitch-1: #ff0040;
+            --glitch-2: #00ff41;
+            --glitch-3: #ff8000;
+            --glitch-4: #00d4ff;
+        }
+        
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #0d0b14;
+            color: white;
+            font-family: 'Press Start 2P', monospace;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, p, button, a, span, div, table, th, td, input {
+            font-family: 'Press Start 2P', monospace;
+        }
+        
+        @keyframes glitch-anim {
+            0% { text-shadow: 2px 0 var(--glitch-1), -2px 0 var(--glitch-2); }
+            25% { text-shadow: -2px -2px var(--glitch-3), 2px 2px var(--glitch-4); }
+            50% { text-shadow: 2px -2px var(--glitch-1), -2px 2px var(--glitch-2); }
+            75% { text-shadow: -2px 0 var(--glitch-3), 2px 0 var(--glitch-4); }
+            100% { text-shadow: 2px 0 var(--glitch-1), -2px 0 var(--glitch-2); }
+        }
+        
+        .glitch-effect:hover {
+            animation: glitch-anim 0.3s ease-in-out infinite;
+        }
+        
+        .typing-effect {
+            border-right: 0.15em solid #ff4500;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #ff4500; } }
+        
+        .btn-glow {
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(255, 69, 0, 0.8);
+            transform: scale(1.05);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #ff8717, #ff4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-divider {
+            height: 2px;
+            margin: 6rem auto;
+            width: 80%;
+            background: linear-gradient(to right, #2C2A37, #ff4500, #2C2A37);
+        }
+        
+        .floating-icon { position: absolute; opacity: 0.1; animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-20px) rotate(180deg); } }
+        
+        .icon-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .icon-2 { top: 30%; right: 15%; animation-delay: 2s; }
+        .icon-3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+        .icon-4 { bottom: 30%; right: 10%; animation-delay: 1s; }
+        
+        .service-card { background: rgba(26, 24, 35, 0.8); border: 1px solid #2C2A37; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 69, 0, 0.1), transparent); transition: left 0.5s; }
+        .service-card:hover::before { left: 100%; }
+        .service-card:hover { border-color: #ff4500; box-shadow: 0 0 20px rgba(255, 69, 0, 0.3); transform: translateY(-5px); }
+        
+        .stats-counter { font-size: 2.5rem; color: #ff4500; text-shadow: 0 0 10px rgba(255, 69, 0, 0.5); }
+        .terminal-line { color: #00ff41; font-family: 'Press Start 2P', monospace; font-size: 10px; }
+        .terminal-prompt { opacity: 0; transform: translateX(-20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .terminal-prompt::before { content: '> '; color: #ff4500; }
+        .arsenal-item { border-left: 3px solid #ff4500; padding-left: 1rem; margin-bottom: 1rem; }
+        
+        @keyframes pulse-glow { 0% { box-shadow: 0 0 5px rgba(255, 69, 0, 0.3); } 50% { box-shadow: 0 0 20px rgba(255, 69, 0, 0.8); } 100% { box-shadow: 0 0 5px rgba(255, 69, 0, 0.3); } }
+        .pulse-border { animation: pulse-glow 2s ease-in-out infinite; }
+
+        /* Panel Specific Styles */
+        .panel-container { max-width: 1400px; height: calc(100vh - 4rem); margin: 2rem auto; background-color: #0d0b14; border: 4px solid #2C2A37; box-shadow: 0 0 40px rgba(0,0,0,0.7); display: flex; overflow: hidden; }
+        .panel-sidebar { background-color: #1a1823; border-right: 2px solid #2C2A37; }
+        .panel-sidebar-link { display: flex; align-items: center; padding: 0.75rem 1rem; color: #a1a1aa; transition: all 0.2s ease-in-out; border-left: 3px solid transparent; font-size: 0.8rem; }
+        .panel-sidebar-link:hover { background-color: rgba(255, 69, 0, 0.1); color: #ff4500; border-left-color: #ff4500; }
+        .panel-sidebar-link.active { background-color: rgba(255, 69, 0, 0.2); color: #ff4500; border-left-color: #ff4500; font-weight: bold; }
+        .panel-main { background-color: #0d0b14; }
+        .panel-header { border-bottom: 2px solid #2C2A37; }
+        .panel-tab { border: 2px solid #2C2A37; color: #a1a1aa; cursor: pointer; transition: all 0.2s ease-in-out; padding: 0.5rem 1rem; font-size: 0.7rem; }
+        .panel-tab:hover { border-color: #ff4500; color: #ff4500; }
+        .panel-tab.active { background-color: #ff4500; border-color: #ff4500; color: #0d0b14; font-weight: bold; }
+        .panel-table-container { border: 2px solid #2C2A37; }
+        .panel-table th { color: #a1a1aa; border-bottom: 2px solid #2C2A37; font-size: 0.7rem; }
+        .panel-table td { font-size: 0.8rem; }
+        .panel-service-row { cursor: pointer; transition: background-color 0.2s; }
+        .panel-service-row:hover { background-color: #1a1823; }
+        .panel-service-row.selected { background-color: rgba(255, 69, 0, 0.3) !important; color: white; }
+        .panel-input { background-color: #1a1823; border: 2px solid #2C2A37; color: #00ff41; padding: 0.75rem; font-size: 0.8rem; }
+        .panel-input:focus { outline: none; border-color: #ff4500; box-shadow: 0 0 10px rgba(255, 69, 0, 0.5); }
+        .panel-summary-box { background-color: #1a1823; border: 2px solid #2C2A37; }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 1.5rem; }
+            h2 { font-size: 1.2rem; }
+            .stats-counter { font-size: 2rem; }
+            .panel-container { flex-direction: column; height: auto; margin: 1rem; }
+            .panel-sidebar { width: 100%; border-right: none; border-bottom: 2px solid #2C2A37; }
+        }
+    </style>
 </head>
-<body class="bg-[#0d0b14] dark:bg-[#0d0b14]"> <header class="w-full text-xs text-center py-2 border-b flex justify-between items-center px-4 sticky top-0 z-50 bg-[#1a1823] border-[#2C2A37] text-orange-400
-               dark:bg-[#1a1823] dark:border-[#2C2A37] dark:text-orange-400
-               light:bg-black light:border-green-500 light:text-green-500">
-    <div class="flex items-center gap-2">
-        <img src="https://updatedcardscript.standard.us-east-1.oortstorages.com/ChatGPT%20Image%20Aug%207%2C%202025%2C%2003_19_27%20PM.png" alt="Pumpdit Logo" class="h-6 w-6 rounded-full">
-        <span>Live $PUMPDIT: <span id="pumpdit-price">$0.0000123</span></span>
+<body class="bg-[#0d0b14]">
+    
+    <div id="landing-page">
+        <header class="w-full text-xs text-center py-2 border-b border-[#2C2A37] bg-[#1a1823] sticky top-0 z-50">
+            <div class="flex justify-between items-center px-4">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="zap" class="w-5 h-5 text-orange-400"></i>
+                    <span class="text-orange-400">SOCIALPUMP ACTIVE</span>
+                    <span class="text-gray-400">|</span>
+                    <span class="text-green-400">SYSTEMS ONLINE</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="terminal-line">INFLUENCE_STATUS: WEAPONIZED</span>
+                    <button onclick="showPanel()" class="bg-orange-600/50 text-white text-[10px] py-1 px-3 rounded-md hover:bg-orange-600/80 btn-glow">
+                        ACCESS TERMINAL
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main>
+            <!-- Hero Section -->
+            <section class="min-h-screen flex items-center justify-center px-6 relative">
+                <div class="floating-icon icon-1 text-6xl text-orange-400"><i data-lucide="target"></i></div>
+                <div class="floating-icon icon-2 text-6xl text-red-500"><i data-lucide="crosshair"></i></div>
+                <div class="floating-icon icon-3 text-6xl text-green-400"><i data-lucide="zap"></i></div>
+                <div class="floating-icon icon-4 text-6xl text-blue-400"><i data-lucide="activity"></i></div>
+                
+                <div class="text-center max-w-4xl">
+                    <div class="mb-6"><span class="inline-block bg-orange-600/20 text-orange-400 text-xs px-4 py-2 rounded-full border border-orange-600/30 pulse-border">🎯 TACTICAL SOCIAL WARFARE PLATFORM</span></div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 gradient-text glitch-effect typing-effect">WEAPONIZED INFLUENCE</h1>
+                    <div class="space-y-2 mb-8 text-left max-w-2xl mx-auto">
+                        <p class="terminal-line terminal-prompt">INITIALIZING SOCIAL DOMINANCE PROTOCOL...</p>
+                        <p class="terminal-line terminal-prompt">LOADING CRYPTO ENGAGEMENT ARSENAL...</p>
+                        <p class="terminal-line terminal-prompt">TARGETING COINMARKETCAP, OPENSEA, TWITTER...</p>
+                        <p class="terminal-line terminal-prompt">READY TO DEPLOY NARRATIVE CONTROL</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                        <button onclick="scrollToSection('arsenal')" class="bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold py-4 px-8 rounded-none uppercase tracking-wider btn-glow flex items-center justify-center gap-3"><i data-lucide="crosshair" class="w-5 h-5"></i>DEPLOY WEAPONS</button>
+                        <button onclick="scrollToSection('services')" class="bg-transparent border-2 border-orange-600 text-orange-400 font-bold py-4 px-8 rounded-none uppercase tracking-wider hover:bg-orange-600/10 flex items-center justify-center gap-3"><i data-lucide="eye" class="w-5 h-5"></i>RECON SERVICES</button>
+                    </div>
+                </div>
+            </section>
+            <div class="section-divider"></div>
+            <section id="arsenal" class="px-6 py-16">
+                <div class="max-w-6xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-4 gradient-text glitch-effect flex items-center justify-center gap-4"><i data-lucide="crosshair" class="w-10 h-10"></i>THE ARSENAL</h2>
+                    <p class="text-center text-gray-400 mb-12 terminal-line">SELECT YOUR WEAPONS OF MASS ENGAGEMENT</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="service-card rounded-lg p-6"><div class="flex items-center gap-3 mb-4"><i data-lucide="trending-up" class="w-6 h-6 text-orange-400"></i><h3 class="text-orange-400 text-sm">COINMARKETCAP</h3></div><h4 class="text-white mb-3 text-xs">RANKING MANIPULATION</h4><div class="arsenal-item"><p class="text-gray-300 text-[10px]">• Watchlist Followers Injection</p><p class="text-gray-300 text-[10px]">• Vote Bombing Campaigns</p><p class="text-gray-300 text-[10px]">• Comment Army Deployment</p></div><div class="text-green-400 text-xs mt-4">THREAT LEVEL: HIGH</div></div>
+                        <div class="service-card rounded-lg p-6"><div class="flex items-center gap-3 mb-4"><i data-lucide="image" class="w-6 h-6 text-blue-400"></i><h3 class="text-blue-400 text-sm">OPENSEA</h3></div><h4 class="text-white mb-3 text-xs">NFT HYPE WARFARE</h4><div class="arsenal-item"><p class="text-gray-300 text-[10px]">• Collection Follower Swarms</p><p class="text-gray-300 text-[10px]">• Fake Bidding Networks</p><p class="text-gray-300 text-[10px]">• Viral Launch Campaigns</p></div><div class="text-green-400 text-xs mt-4">THREAT LEVEL: CRITICAL</div></div>
+                        <div class="service-card rounded-lg p-6"><div class="flex items-center gap-3 mb-4"><i data-lucide="twitter" class="w-6 h-6 text-cyan-400"></i><h3 class="text-cyan-400 text-sm">CRYPTO TWITTER</h3></div><h4 class="text-white mb-3 text-xs">NARRATIVE CONTROL</h4><div class="arsenal-item"><p class="text-gray-300 text-[10px]">• Targeted Follower Acquisition</p><p class="text-gray-300 text-[10px]">• Trend Hijacking Operations</p><p class="text-gray-300 text-[10px]">• Influence Bot Networks</p></div><div class="text-green-400 text-xs mt-4">THREAT LEVEL: MAXIMUM</div></div>
+                        <div class="service-card rounded-lg p-6"><div class="flex items-center gap-3 mb-4"><i data-lucide="send" class="w-6 h-6 text-green-400"></i><h3 class="text-green-400 text-sm">TELEGRAM</h3></div><h4 class="text-white mb-3 text-xs">COMMUNITY INFILTRATION</h4><div class="arsenal-item"><p class="text-gray-300 text-[10px]">• Channel Member Flooding</p><p class="text-gray-300 text-[10px]">• Message Amplification</p><p class="text-gray-300 text-[10px]">• Shill Army Coordination</p></div><div class="text-green-400 text-xs mt-4">THREAT LEVEL: HIGH</div></div>
+                        <div class="service-card rounded-lg p-6"><div class="flex items-center gap-3 mb-4"><i data-lucide="gamepad-2" class="w-6 h-6 text-purple-400"></i><h3 class="text-purple-400 text-sm">DISCORD</h3></div><h4 class="text-white mb-3 text-xs">SERVER DOMINATION</h4><div class="arsenal-item"><p class="text-gray-300 text-[10px]">• Member Growth Hacks</p><p class="text-gray-300 text-[10px]">• Voice Channel Raids</p><p class="text-gray-300 text-[10px]">• Boost Manipulation</p></div><div class="text-green-400 text-xs mt-4">THREAT LEVEL: CRITICAL</div></div>
+                        <div class="service-card rounded-lg p-6"><div class="flex items-center gap-3 mb-4"><i data-lucide="skull" class="w-6 h-6 text-red-400"></i><h3 class="text-red-400 text-sm">CUSTOM OPS</h3></div><h4 class="text-white mb-3 text-xs">PSYCHOLOGICAL WARFARE</h4><div class="arsenal-item"><p class="text-gray-300 text-[10px]">• Multi-Platform Strikes</p><p class="text-gray-300 text-[10px]">• Coordinated FUD Campaigns</p><p class="text-gray-300 text-[10px]">• Competitor Disruption</p></div><div class="text-red-400 text-xs mt-4">THREAT LEVEL: NUCLEAR</div></div>
+                    </div>
+                </div>
+            </section>
+            <div class="section-divider"></div>
+            <section class="px-6 py-16 bg-[#13111B]">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold mb-4 gradient-text glitch-effect flex items-center justify-center gap-4"><i data-lucide="activity" class="w-10 h-10"></i>COMBAT STATISTICS</h2>
+                    <p class="terminal-line mb-12">LIVE BATTLEFIELD METRICS</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                        <div class="text-center"><div class="stats-counter mb-2">127K+</div><p class="text-gray-400 text-xs">TARGETS ELIMINATED</p></div>
+                        <div class="text-center"><div class="stats-counter mb-2">3,420</div><p class="text-gray-400 text-xs">ACTIVE OPERATIVES</p></div>
+                        <div class="text-center"><div class="stats-counter mb-2">99.8%</div><p class="text-gray-400 text-xs">MISSION SUCCESS</p></div>
+                        <div class="text-center"><div class="stats-counter mb-2">24/7</div><p class="text-gray-400 text-xs">WARFARE UPTIME</p></div>
+                    </div>
+                </div>
+            </section>
+            <div class="section-divider"></div>
+            <section id="services" class="px-6 py-16">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-center mb-4 gradient-text glitch-effect flex items-center justify-center gap-4"><i data-lucide="file-text" class="w-10 h-10"></i>MISSION BRIEFING</h2>
+                    <p class="text-center text-gray-400 mb-12 terminal-line">UNDERSTAND THE BATTLEFIELD</p>
+                    <div class="space-y-8">
+                        <div class="bg-[#1a1823] border border-[#2C2A37] rounded-lg p-6"><div class="flex items-start gap-4"><i data-lucide="target" class="w-8 h-8 text-orange-400 mt-1"></i><div><h3 class="text-orange-400 mb-2 text-sm">PHASE 1: RECONNAISSANCE</h3><p class="text-gray-300 text-xs leading-relaxed">We identify your targets across the crypto social landscape. Every subreddit, every Discord server, every Twitter thread is mapped and catalogued for maximum impact.</p></div></div></div>
+                        <div class="bg-[#1a1823] border border-[#2C2A37] rounded-lg p-6"><div class="flex items-start gap-4"><i data-lucide="crosshair" class="w-8 h-8 text-red-400 mt-1"></i><div><h3 class="text-red-400 mb-2 text-sm">PHASE 2: INFILTRATION</h3><p class="text-gray-300 text-xs leading-relaxed">Our network of authentic crypto accounts begins the soft approach. Building credibility, establishing presence, gaining trust in your target communities.</p></div></div></div>
+                        <div class="bg-[#1a1823] border border-[#2C2A37] rounded-lg p-6"><div class="flex items-start gap-4"><i data-lucide="zap" class="w-8 h-8 text-green-400 mt-1"></i><div><h3 class="text-green-400 mb-2 text-sm">PHASE 3: DEPLOYMENT</h3><p class="text-gray-300 text-xs leading-relaxed">Strike fast, strike hard. Coordinated engagement campaigns across multiple platforms create unstoppable momentum for your crypto project.</p></div></div></div>
+                        <div class="bg-[#1a1823] border border-[#2C2A37] rounded-lg p-6"><div class="flex items-start gap-4"><i data-lucide="activity" class="w-8 h-8 text-blue-400 mt-1"></i><div><h3 class="text-blue-400 mb-2 text-sm">PHASE 4: DOMINATION</h3><p class="text-gray-300 text-xs leading-relaxed">Watch your metrics explode. Rankings climb, followers surge, and your crypto project achieves the social proof needed for exponential growth.</p></div></div></div>
+                    </div>
+                </div>
+            </section>
+            <div class="section-divider"></div>
+            <section class="px-6 py-16 bg-gradient-to-b from-[#0d0b14] to-[#1a1823]">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-4xl font-bold mb-6 gradient-text glitch-effect">READY TO WEAPONIZE YOUR INFLUENCE?</h2>
+                    <div class="space-y-3 mb-8 text-left max-w-md mx-auto">
+                        <p class="terminal-line terminal-prompt">CRYPTO WARFARE SYSTEMS ONLINE</p>
+                        <p class="terminal-line terminal-prompt">TARGETING ALGORITHMS LOADED</p>
+                        <p class="terminal-line terminal-prompt">AWAITING YOUR COMMAND...</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button onclick="showPanel()" class="bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold py-4 px-8 rounded-none uppercase tracking-wider btn-glow flex items-center justify-center gap-3"><i data-lucide="rocket" class="w-5 h-5"></i>LAUNCH ATTACK</button>
+                        <button onclick="showPanel()" class="bg-transparent border-2 border-red-600 text-red-400 font-bold py-4 px-8 rounded-none uppercase tracking-wider hover:bg-red-600/10 flex items-center justify-center gap-3"><i data-lucide="shield" class="w-5 h-5"></i>ACCESS COMMAND CENTER</button>
+                    </div>
+                    <p class="text-gray-500 text-xs mt-8 terminal-line">WARNING: WEAPONIZED SOCIAL INFLUENCE CAN CAUSE EXPLOSIVE GROWTH</p>
+                </div>
+            </section>
+        </main>
+        <footer class="text-center py-8 border-t border-[#2C2A37] bg-[#0d0b14]">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="flex justify-center items-center gap-6 mb-4">
+                    <a href="#" class="text-orange-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-orange-400 hover:text-white transition-colors"><i data-lucide="send" class="w-6 h-6"></i></a>
+                    <a href="#" class="text-orange-400 hover:text-white transition-colors"><i data-lucide="gamepad-2" class="w-6 h-6"></i></a>
+                </div>
+                <p class="text-gray-400 text-xs terminal-line">© 2025 SOCIALPUMP | WEAPONIZED INFLUENCE PROTOCOL</p>
+                <p class="text-orange-400 text-xs mt-2 terminal-line">DEPLOY. DOMINATE. PUMP.</p>
+            </div>
+        </footer>
     </div>
-    <div class="flex items-center gap-4">
-      <button id="theme-toggle" class="text-gray-400 hover:text-white light:text-green-500 light:hover:text-white">
-          <i id="theme-toggle-dark-icon" data-lucide="moon" class="w-5 h-5 hidden"></i>
-          <i id="theme-toggle-light-icon" data-lucide="sun" class="w-5 h-5"></i>
-      </button>
-      <div id="wallet-status">
-          <button onclick="openWalletModal()" id="connect-wallet-btn-header" class="bg-orange-600/50 text-white text-[10px] py-1 px-3 rounded-md hover:bg-orange-600/80">Connect Wallet</button>
-          <span id="wallet-address" class="hidden text-green-400"></span>
-      </div>
-    </div>
-  </header>
 
-  <div class="px-4 pt-6 max-w-xl mx-auto">
-    <canvas id="priceChart"></canvas>
-  </div>
+    <div id="panel-page" class="hidden">
+        <div class="panel-container">
+            <!-- Sidebar -->
+            <aside class="w-64 panel-sidebar p-6 flex-shrink-0 flex flex-col">
+                <div class="flex items-center mb-10 gap-2">
+                    <i data-lucide="zap" class="w-8 h-8 text-orange-400"></i>
+                    <span class="text-2xl gradient-text glitch-effect">SocialPump</span>
+                </div>
+                <h3 class="text-sm text-gray-400 mb-2 uppercase tracking-widest">Operations</h3>
+                <nav class="flex flex-col space-y-2">
+                    <a href="#" class="panel-sidebar-link active"><i data-lucide="plus-circle" class="w-4 h-4 mr-3"></i>New Operation</a>
+                    <a href="#" class="panel-sidebar-link"><i data-lucide="history" class="w-4 h-4 mr-3"></i>Operation History</a>
+                    <a href="#" class="panel-sidebar-link"><i data-lucide="gem" class="w-4 h-4 mr-3"></i>Add Funds</a>
+                </nav>
+                <div class="mt-auto">
+                    <button onclick="showLanding()" class="panel-sidebar-link w-full">
+                       <i data-lucide="arrow-left" class="w-4 h-4 mr-3"></i>Return to Landing
+                    </button>
+                </div>
+            </aside>
 
-  <section class="text-center px-6 section-block">
-     <img src="https://updatedcardscript.standard.us-east-1.oortstorages.com/ChatGPT%20Image%20Aug%207%2C%202025%2C%2003_19_27%20PM.png" alt="Pumpdit Logo" class="h-24 w-24 mx-auto mb-6 rounded-full shadow-lg">
-     <h1 id="hero-headline" class="text-3xl md:text-4xl mb-4 font-bold gradient-text inline-block"></h1>
-     <p class="mt-4 text-lg max-w-2xl mx-auto text-gray-300 light:text-green-400">The memecoin that turns Reddit clout into currency. Buy karma. Push narratives. Dominate subcultures.</p>
-    <div class="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
-      <button onclick="document.getElementById('buy-section').scrollIntoView();" class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full btn-glow text-base flex items-center justify-center gap-2">
-        <i data-lucide="coins" class="w-5 h-5"></i> Buy $PUMPDIT
-      </button>
-      <button onclick="document.getElementById('order-section').scrollIntoView();" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full text-base flex items-center justify-center gap-2">
-        <i data-lucide="bomb" class="w-5 h-5"></i> Deploy Karma Bomb
-      </button>
-    </div>
-  </section>
-  
-  <div class="section-divider"></div>
+            <!-- Main Content -->
+            <div class="flex-1 flex flex-col">
+                <header class="panel-header px-8 py-4 flex justify-between items-center">
+                    <h1 class="text-xl gradient-text glitch-effect">Command Terminal</h1>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-400">Balance</p>
+                        <p class="text-lg text-green-400 font-bold">$1,204.58</p>
+                    </div>
+                </header>
 
-  <section id="buy-section" class="text-center px-6 section-block section-hidden">
-    <h2 class="text-3xl mb-8 font-bold gradient-text glitch-effect flex items-center justify-center gap-3"><i data-lucide="archive" class="w-8 h-8"></i> Get Your Ammo</h2>
-    <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-left text-sm">
-        <div class="p-4 rounded-lg bg-[#13111B] border border-[#2C2A37] light:bg-black light:border-green-500"><p class="text-orange-400 light:text-green-500 mb-2 text-lg">1. Get a Wallet</p><p class="text-gray-300 light:text-green-400">Download Phantom or your wallet of choice from the app store or extension store.</p></div>
-        <div class="p-4 rounded-lg bg-[#13111B] border border-[#2C2A37] light:bg-black light:border-green-500"><p class="text-orange-400 light:text-green-500 mb-2 text-lg">2. Get SOL</p><p class="text-gray-300 light:text-green-400">Buy Solana (SOL) on an exchange like Coinbase and send it to your wallet.</p></div>
-        <div class="p-4 rounded-lg bg-[#13111B] border border-[#2C2A37] light:bg-black light:border-green-500"><p class="text-orange-400 light:text-green-500 mb-2 text-lg">3. Swap for $PUMPDIT</p><p class="text-gray-300 light:text-green-400">Go to <a href="https://raydium.io/swap/" target="_blank" class="text-orange-400 underline hover:text-white light:text-green-500">Raydium</a> or <a href="https://jup.ag/swap/" target="_blank" class="text-orange-400 underline hover:text-white light:text-green-500">Jupiter</a> and paste the token address.</p></div>
-    </div>
-    <div class="mt-8 p-4 rounded-lg max-w-3xl mx-auto bg-[#13111B] border border-[#2C2A37] light:bg-black light:border-green-500">
-        <p class="text-xs mb-2 text-gray-400 light:text-green-400">Contract Address:</p>
-        <div class="flex items-center justify-center">
-            <input id="contractAddress" type="text" readonly value="PUMPDiT8VBdK1fK1y2e3b4c5d6e7f8g9hAjBkClDmEn" class="text-green-400 text-xs md:text-sm bg-transparent text-center w-auto">
-            <button onclick="copyContract()" id="copyBtn" class="copy-btn text-white light:text-green-500">COPY</button>
+                <main class="flex-1 p-8 overflow-y-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div class="lg:col-span-2 space-y-8">
+                            <div>
+                                <h2 class="text-lg text-orange-400 mb-4">Select Battlefield</h2>
+                                <div id="realm-tabs" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="panel-tab active" data-realm="cmc">CMC</div>
+                                    <div class="panel-tab" data-realm="twitter">X/Twitter</div>
+                                    <div class="panel-tab" data-realm="telegram">Telegram</div>
+                                    <div class="panel-tab" data-realm="discord">Discord</div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel-table-container">
+                                <h2 id="scroll-header" class="text-lg text-orange-400 p-4 border-b-2 border-[#2C2A37]">CoinMarketCap Arsenal</h2>
+                                <div class="overflow-y-auto" style="max-height: 400px;">
+                                    <div id="service-tables">
+                                        <!-- Service tables will be populated by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-1">
+                            <div class="panel-summary-box p-6 sticky top-8">
+                                <h2 class="text-lg text-orange-400 mb-4">Operation Summary</h2>
+                                <div id="order-details-placeholder" class="text-center text-gray-500 py-8 text-xs">Select a weapon from the arsenal.</div>
+                                <div id="order-summary" class="hidden space-y-4">
+                                    <div>
+                                        <p class="text-xs text-gray-400">Selected Weapon</p>
+                                        <p id="summary-service-name" class="font-semibold text-sm text-white"></p>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label for="link" class="block text-xs text-gray-400 mb-2">Target Coordinates (URL)</label>
+                                            <input type="text" id="link" name="link" class="panel-input w-full" placeholder="https://...">
+                                        </div>
+                                        <div>
+                                            <label for="quantity" class="block text-xs text-gray-400 mb-2">Deployment Strength (Quantity)</label>
+                                            <input type="number" id="quantity" name="quantity" class="panel-input w-full" placeholder="1000">
+                                        </div>
+                                    </div>
+                                    <hr class="border-gray-700 my-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-lg text-orange-400">Total Cost:</span>
+                                        <span id="total-cost" class="text-xl font-bold text-green-400">0.00 USD</span>
+                                    </div>
+                                    <button id="place-order-btn" class="w-full bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold py-3 px-6 rounded-none uppercase tracking-wider btn-glow flex items-center justify-center gap-3 mt-4 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                        <i data-lucide="rocket" class="w-5 h-5"></i>
+                                        Launch
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
         </div>
     </div>
-  </section>
-  
-  <div class="section-divider"></div>
 
-  <section class="text-center px-6 section-block section-hidden">
-    <h2 class="text-3xl mb-8 font-bold gradient-text glitch-effect flex items-center justify-center gap-3"><i data-lucide="rocket" class="w-8 h-8"></i> Launch Sequence</h2>
-    <div class="max-w-3xl mx-auto p-6 rounded-xl text-left space-y-6 bg-[#13111B] border border-[#2C2A37] light:bg-black light:border-green-500">
-        <div class="flex items-start gap-4"><p class="text-orange-400 light:text-green-500 text-lg">1.</p><div><h3 class="text-lg text-orange-400 light:text-green-500">TARGET ACQUIRED</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">You've landed on the launchpad. The Reddit algorithm is in your sights.</p></div></div>
-        <div class="flex items-start gap-4"><p class="text-orange-400 light:text-green-500 text-lg">2.</p><div><h3 class="text-lg text-orange-400 light:text-green-500">AUTHENTICATE ACCESS</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">Connect your wallet to prove you're part of the operation. No spies allowed.</p></div></div>
-        <div class="flex items-start gap-4"><p class="text-orange-400 light:text-green-500 text-lg">3.</p><div><h3 class="text-lg text-orange-400 light:text-green-500">ARM THE PAYLOAD</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">Choose your weapon from the arsenal—from a single spark to a full-scale narrative bomb.</p></div></div>
-        <div class="flex items-start gap-4"><p class="text-orange-400 light:text-green-500 text-lg">4.</p><div><h3 class="text-lg text-orange-400 light:text-green-500">SET COORDINATES</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">Enter your target link and set the power level. A few $PUMPDIT is all it takes to make an impact.</p></div></div>
-        <div class="flex items-start gap-4"><p class="text-orange-400 light:text-green-500 text-lg">5.</p><div><h3 class="text-lg text-orange-400 light:text-green-500">EXECUTE MISSION</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">Deploy your payload and watch the karma rain down. Mission accomplished.</p></div></div>
-    </div>
-  </section>
+    <script>
+        // --- PAGE SWITCHING ---
+        const landingPage = document.getElementById('landing-page');
+        const panelPage = document.getElementById('panel-page');
 
-  <div class="section-divider"></div>
-
-  <section class="text-center px-6 section-block section-hidden">
-    <h2 class="text-3xl mb-8 font-bold gradient-text glitch-effect flex items-center justify-center gap-3"><i data-lucide="book-marked" class="w-8 h-8"></i> The Doctrine</h2>
-    <div class="max-w-3xl mx-auto p-6 rounded-xl text-left space-y-6 bg-[#13111B] border border-[#2C2A37] light:bg-black light:border-green-500">
-        <div class="flex items-start gap-4"><i data-lucide="activity" class="w-8 h-8 flex-shrink-0 mt-1 text-orange-400 light:text-green-500"></i><div><h3 class="text-lg text-orange-400 light:text-green-500">Impact > Metrics</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">We don't care about your balance sheet. We care about our footprint on the digital battlefield.</p></div></div>
-        <div class="flex items-start gap-4"><i data-lucide="gem" class="w-8 h-8 flex-shrink-0 mt-1 text-green-400"></i><div><h3 class="text-lg text-green-400">Influence is the Final Asset</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">Liquidity pools can be drained. A controlled narrative is forever.</p></div></div>
-        <div class="flex items-start gap-4"><i data-lucide="file-terminal" class="w-8 h-8 flex-shrink-0 mt-1 text-cyan-400 light:text-green-500"></i><div><h3 class="text-lg text-cyan-400 light:text-green-500">Directives > Whitepapers</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">Our roadmap isn't a 90-page PDF. It's a series of tactical targets delivered to the War Council.</p></div></div>
-        <div class="flex items-start gap-4"><i data-lucide="megaphone" class="w-8 h-8 flex-shrink-0 mt-1 text-purple-400 light:text-green-500"></i><div><h3 class="text-lg text-purple-400 light:text-green-500">Propaganda Pays</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">The best memes and shitposts that support the cause will be rewarded from the treasury. This isn't just a game; it's a career.</p></div></div>
-        <div class="flex items-start gap-4"><i data-lucide="shield-off" class="w-8 h-8 flex-shrink-0 mt-1 text-red-500 light:text-green-500"></i><div><h3 class="text-lg text-red-500 light:text-green-500">No Kings, No Founders</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">This protocol was deployed anonymously from a secure bunker. There are no dev wallets, no team tokens—only the mission.</p></div></div>
-    </div>
-  </section>
-  
-  <div class="section-divider"></div>
-
-  <section class="text-center px-6 section-block section-hidden">
-    <h2 class="text-3xl mb-8 font-bold gradient-text glitch-effect flex items-center justify-center gap-3"><i data-lucide="archive" class="w-8 h-8"></i> The Arsenal</h2>
-    <div class="max-w-3xl mx-auto p-6 rounded-xl text-left space-y-6 bg-[#13111B] border border-[#2C2A37] light:bg-black light:border-green-500">
-        <div class="flex items-start gap-4"><i data-lucide="package-plus" class="w-8 h-8 flex-shrink-0 mt-1 text-orange-400 light:text-green-500"></i><div><h3 class="text-lg text-orange-400 light:text-green-500">Supply Drop: 1B $PUMPDIT</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">A fixed billion rounds. No more, no less. Enough ammo for a hostile takeover of the front page.</p></div></div>
-        <div class="flex items-start gap-4"><i data-lucide="percent-circle" class="w-8 h-8 flex-shrink-0 mt-1 text-green-400"></i><div><h3 class="text-lg text-green-400">Tribute: 0% Buy / 0% Sell</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">This is a black market, not the stock market. Your transactions are yours. We don't take a cut.</p></div></div>
-        <div class="flex items-start gap-4"><i data-lucide="flame" class="w-8 h-8 flex-shrink-0 mt-1 text-red-500 light:text-green-500"></i><div><h3 class="text-lg text-red-500 light:text-green-500">Scorched Earth: LP Tokens Burned</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">The escape route has been destroyed. The devs can't pull the rug because there is no rug. Only concrete.</p></div></div>
-        <div class="flex items-start gap-4"><i data-lucide="key-round" class="w-8 h-8 flex-shrink-0 mt-1 text-purple-400 light:text-green-500"></i><div><h3 class="text-lg text-purple-400 light:text-green-500">Utility: Access Granted</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">Holding $PUMPDIT is your keycard to the weapons locker. Deploy upvotes, comments, and narrative nukes directly from our terminal.</p></div></div>
-        <div class="flex items-start gap-4"><i data-lucide="swords" class="w-8 h-8 flex-shrink-0 mt-1 text-cyan-400 light:text-green-500"></i><div><h3 class="text-lg text-cyan-400 light:text-green-500">Governance: The War Council</h3><p class="text-sm mt-1 text-gray-300 light:text-green-400">Major holders get a seat at the table to vote on new targets, features, and strategic treasury deployments. This is your cartel now.</p></div></div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <section id="order-section" class="text-center px-6 section-block section-hidden">
-    <h2 class="text-3xl mb-2 font-bold gradient-text glitch-effect flex items-center justify-center gap-3"><i data-lucide="wrench" class="w-8 h-8"></i> Pick Your Poison</h2>
-    <p class="mb-8 text-gray-300 light:text-green-400">Want fake fans or real fire?</p>
-    <div class="max-w-xl mx-auto p-6 rounded-xl bg-[#1a1823] border border-[#2C2A37] light:bg-black light:border-green-500">
-      <label class="block text-sm text-orange-400 light:text-green-500 mb-2 text-left">SERVICE:</label>
-      <select id="orderService" class="w-full p-3 mb-4 rounded border text-sm bg-[#13111B] border-gray-600 text-white light:bg-black light:border-green-500 light:text-green-400">
-        <option value="2.50">100 Upvotes (The Spark)</option> <option value="8.50">500 Upvotes (Trending Push)</option>
-        <option value="12.00">100 AI Comments (Narrative Control)</option> <option value="22.00">1000 Subscribers (Cult Building)</option>
-        <option value="35.00">Custom Hype Thread (The Nuclear Option)</option>
-      </select>
-      <label class="block text-sm text-orange-400 light:text-green-500 mb-2 text-left">LINK:</label>
-      <input type="url" id="postLink" class="w-full p-3 mb-4 rounded border text-sm bg-[#13111B] border-gray-600 text-white light:bg-black light:border-green-500 light:text-green-400" placeholder="https://reddit.com/r/subreddit/your_post" required />
-      <label class="block text-sm text-orange-400 light:text-green-500 mb-2 text-left">QUANTITY:</label>
-      <input type="number" id="orderQty" class="w-full p-3 mb-4 rounded border text-sm bg-[#13111B] border-gray-600 text-white light:bg-black light:border-green-500 light:text-green-400" value="1" min="1" />
-      <div class="text-sm mb-6 text-gray-300 light:text-green-400">
-        COST: <span id="orderTotalUSD" class="font-bold text-green-400"></span> USD (<span id="orderTotal" class="font-bold text-green-400">Loading...</span> $PUMPDIT)
-        <p class="text-xs mt-2">"Use $PUMPDIT to hijack the hot tab."</p>
-      </div>
-      <button onclick="placeOrder()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full btn-glow w-full flex items-center justify-center gap-2">
-        Place Order <i data-lucide="rocket" class="w-5 h-5"></i>
-      </button>
-    </div>
-  </section>
-
-  <section class="text-center px-6 section-block section-hidden">
-      <h2 class="text-3xl mb-8 font-bold gradient-text glitch-effect flex items-center justify-center gap-3"><i data-lucide="satellite-dish" class="w-8 h-8"></i> Live Ops Tracker</h2>
-      <div id="ops-container" class="max-w-3xl mx-auto space-y-3 text-xs text-left"></div>
-  </section>
-
-  <div class="section-divider"></div>
-  
-  <section class="text-center px-6 section-block section-hidden">
-    <h2 class="text-3xl mb-8 font-bold gradient-text glitch-effect flex items-center justify-center gap-3">
-      <i data-lucide="users" class="w-8 h-8"></i> Join The Uprising
-    </h2>
-    <p class="mb-8 max-w-xl mx-auto text-gray-300 light:text-green-400">Influence is a team sport. Find us on the front lines.</p>
-    <div class="flex justify-center items-center gap-6">
-      <a href="#" target="_blank" class="text-orange-400 hover:text-white light:text-green-500 transition-colors" aria-label="X/Twitter"><svg class="w-10 h-10" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>X</title><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zm-1.61 19.713h2.436L4.178 2.547H1.641l15.65 18.319z"/></svg></a>
-      <a href="#" target="_blank" class="text-orange-400 hover:text-white light:text-green-500 transition-colors" aria-label="Telegram"><svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"><title>Telegram</title><path d="M11.944,0 C5.356,0 0,5.356 0,11.944 C0,18.531 5.356,23.888 11.944,23.888 C18.531,23.888 23.888,18.531 23.888,11.944 C23.888,5.356 18.531,0 11.944,0 Z M18.118,8.113 C17.843,9.519 16.52,15.803 15.938,18.55 C15.66,19.928 14.82,20.285 14.045,19.838 C12.83,19.125 11.884,18.393 10.97,17.703 C9.96,16.942 9.25,16.485 9.065,16.149 C8.879,15.813 8.221,15.356 8.221,14.638 C8.221,13.831 8.793,13.475 9.365,12.903 C9.938,12.331 10.643,11.668 11.438,10.925 C12.212,10.203 12.988,9.48 13.118,9.25 C13.248,9.02 13.356,8.663 13.16,8.445 C12.964,8.228 12.638,8.356 12.43,8.475 C12.221,8.594 10.43,9.663 7.938,11.243 C7.545,11.5 7.153,11.625 6.76,11.625 C6.273,11.625 5.5,11.453 4.938,11.28 C4.26,11.063 3.653,10.913 3.8,10.138 C3.893,9.663 4.43,9.228 5.43,8.835 C8.303,7.703 10.545,6.77 12.118,6.163 C15.653,4.83 17.03,4.438 18.118,8.113 Z"/></svg></a>
-    </div>
-  </section>
-
-  <div id="orderModal" class="modal"><div class="modal-content"><h2 class="text-xl mb-4 flex items-center justify-center gap-2 text-orange-400 light:text-green-500"><i data-lucide="receipt" class="w-6 h-6"></i>Your Order Is Live</h2><p class="text-sm mb-4 text-white light:text-green-400">Let the karma rain begin.</p><div id="order-summary" class="text-left text-sm p-4 rounded-lg mb-4 bg-[#0d0b14] light:bg-black"></div><p id="tx-hash" class="text-green-400 text-xs break-all"></p><button onclick="closeOrderModal()" class="mt-6 px-4 py-2 bg-orange-500 text-white font-bold rounded-full">Roger That</button></div></div>
-  <div id="walletModal" class="modal"><div class="modal-content" id="wallet-modal-content"></div></div>
-  <div id="easterEgg" style="display:none; position:fixed; bottom:20px; right:20px; font-size:14px; padding:8px 12px; border-radius:6px; z-index:1000;" class="bg-[#13111B] border border-orange-400 light:bg-black light:border-green-500"><span class="flex items-center gap-2 text-white light:text-green-500"><i data-lucide="egg" class="w-4 h-4"></i>Bonus: +10 Upvotes!</span></div>
-  <footer class="text-center py-10 text-xs border-t mt-8 text-gray-400 border-[#2C2A37] light:text-green-400 light:border-green-500"><p>© 2025 $PUMPDIT | A protocol for weaponized attention.</p><p class="mt-2 flex items-center justify-center gap-2">Just pump. <i data-lucide="rocket" class="w-4 h-4"></i></p></footer>
-
-  <script>
-    let priceChart; let lockedPrice = 0.0000123; let priceTimestamp = Date.now();
-    let walletConnected = false; let walletAddress = '';
-    let priceDisplay, chartCtx, walletModal, walletModalContent, orderModal, opsContainer;
-    
-    function loadIcons() { lucide.createIcons(); }
-
-    const sampleServices = [{ name: '500 Upvotes', class: 'text-orange-400 light:text-green-500', value: '+500' }, { name: '100 AI Comments', class: 'text-orange-400 light:text-green-500', value: '+100' },{ name: 'Cult Building', class: 'text-orange-400 light:text-green-500', value: '+1000' }, { name: 'The Spark', class: 'text-orange-400 light:text-green-500', value: '+100' },{ name: 'Trending Push', class: 'text-orange-400 light:text-green-500', value: '+500' }];
-    const sampleSubreddits = ['r/CryptoMoonShots', 'r/wallstreetbets', 'r/solana', 'r/memes', 'r/satoshistreetbets'];
-
-    function createRandomOp() {
-        if (!opsContainer) return;
-        const randomAddress = `0x...${[...Array(4)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')}`;
-        const randomService = sampleServices[Math.floor(Math.random() * sampleServices.length)];
-        const randomSubreddit = sampleSubreddits[Math.floor(Math.random() * sampleSubreddits.length)];
-        const opElement = document.createElement('div');
-        opElement.className = 'bg-[#13111B] border border-[#2C2A37] light:bg-black light:border-green-500 p-3 rounded-lg flex justify-between items-center transition-all duration-500 opacity-0 -translate-y-4';
-        opElement.innerHTML = `<span class="text-white light:text-green-400">${randomAddress} deployed <span class="${randomService.class}">${randomService.name}</span> on ${randomSubreddit}</span><span class="text-green-400">${randomService.value}</span>`;
-        opsContainer.prepend(opElement);
-        setTimeout(() => opElement.classList.remove('opacity-0', '-translate-y-4'), 100);
-        
-        // --- THIS IS THE DEFINITIVE FIX FOR THE LIVE OPS CUTOFF ---
-        if (opsContainer.children.length > 7) {
-            opsContainer.lastChild.classList.add('opacity-0');
-            setTimeout(() => opsContainer.removeChild(opsContainer.lastChild), 500);
+        function showPanel() {
+            landingPage.classList.add('hidden');
+            panelPage.classList.remove('hidden');
+            lucide.createIcons(); // Re-initialize icons for the new view
         }
-    }
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('section-visible'); } });
-    });
-
-    function updateOrderTotal() {
-      if (!document.getElementById('orderService')) return;
-      const serviceSelect = document.getElementById('orderService');
-      const serviceCostUSD = parseFloat(serviceSelect.value);
-      const qty = parseInt(document.getElementById('orderQty').value) || 1;
-      const totalUSD = serviceCostUSD * qty;
-      const totalPumpdit = lockedPrice > 0 ? Math.ceil(totalUSD / lockedPrice).toLocaleString() : '...';
-      document.getElementById('orderTotalUSD').textContent = `$${totalUSD.toFixed(2)}`;
-      document.getElementById('orderTotal').textContent = totalPumpdit;
-    }
-
-    function updateLivePrice() {
-      const now = Date.now();
-      if (now - priceTimestamp >= 1500) {
-        let oldPrice = lockedPrice;
-        lockedPrice = lockedPrice * (1 + (Math.random() - 0.5) * 0.1); 
-        if (lockedPrice < 0.000001) { lockedPrice = 0.000001; }
-        priceTimestamp = now;
-
-        priceDisplay.classList.remove('price-flash-up', 'price-flash-down');
-        if (lockedPrice > oldPrice) { priceDisplay.classList.add('price-flash-up'); } 
-        else if (lockedPrice < oldPrice) { priceDisplay.classList.add('price-flash-down'); }
-        setTimeout(() => { priceDisplay.classList.remove('price-flash-up', 'price-flash-down'); }, 500);
-      }
-      if (priceDisplay) { priceDisplay.textContent = `$${lockedPrice.toFixed(8)}`; }
-      if (priceChart) {
-          const data = priceChart.data.datasets[0].data;
-          data.push(lockedPrice);
-          if (data.length > 40) data.shift();
-          priceChart.update('quiet');
-      }
-      updateOrderTotal();
-    }
-
-    function placeOrder() {
-        if (!walletConnected) { openWalletModal(); return; }
-        const postLinkInput = document.getElementById('postLink');
-        const postLink = postLinkInput.value;
-        if (!postLink) { alert('Please provide a target link for your order.'); postLinkInput.focus(); return; }
-        const serviceSelect = document.getElementById('orderService');
-        const serviceText = serviceSelect.options[serviceSelect.selectedIndex].text;
-        const qty = document.getElementById('orderQty').value;
-        const totalPumpdit = document.getElementById('orderTotal').textContent;
-        document.getElementById('order-summary').innerHTML = `<p class="mb-2"><strong>Service:</strong> <span class="text-orange-400 light:text-green-500">${serviceText}</span></p><p class="mb-2"><strong>Target Link:</strong> <span class="text-orange-400 light:text-green-500 break-all text-xs">${postLink}</span></p><p class="mb-2"><strong>Quantity:</strong> <span class="text-orange-400 light:text-green-500">${qty}</span></p><p><strong>Total Cost:</strong> <span class="text-green-400">${totalPumpdit} $PUMPDIT</span></p>`;
-        document.getElementById('tx-hash').textContent = `Fake TxHash: 0xPUMPED${Math.floor(Math.random() * 1e9).toString(16)}`;
-        orderModal.style.display = 'flex';
-        loadIcons();
-    }
-
-    function closeOrderModal() { if(orderModal) orderModal.style.display = 'none'; }
-    function openWalletModal() { let content = ''; if (walletConnected) { content = `<h2 class="text-xl text-green-400 mb-4 flex items-center justify-center gap-2"><i data-lucide="check-circle" class="w-6 h-6"></i>Wallet Connected</h2><p class="text-white light:text-green-400 text-sm mb-2">Your address:</p><p class="text-green-400 text-xs break-all">${walletAddress}</p><button onclick="disconnectWallet()" class="mt-6 px-4 py-2 bg-red-500 text-white font-bold rounded-full">Disconnect</button>`; } else { content = `<h2 class="text-xl text-orange-400 light:text-green-500 mb-4 flex items-center justify-center gap-2"><i data-lucide="lock" class="w-6 h-6"></i>Connect Wallet</h2><p class="text-white light:text-green-400 text-sm mb-6">Link up so we know you’re not a bot (yet).</p><button onclick="connectWallet()" class="w-full mb-4 px-4 py-3 bg-orange-500 text-white font-bold rounded-full btn-glow">Connect Now</button><button onclick="closeWalletModal()" class="w-full px-4 py-2 bg-gray-600 text-white font-bold rounded-full">Cancel</button>`; } if(walletModalContent) walletModalContent.innerHTML = content; if(walletModal) walletModal.style.display = 'flex'; loadIcons(); }
-    function closeWalletModal() { if(walletModal) walletModal.style.display = 'none'; }
-    function connectWallet() { walletConnected = true; walletAddress = '0x' + [...Array(40)].map(() => Math.floor(Math.random() * 16).toString(16)).join(''); const shortAddress = `${walletAddress.substring(0, 6)}...${walletAddress.substring(walletAddress.length - 4)}`; document.getElementById('wallet-address').textContent = shortAddress; document.getElementById('wallet-address').classList.remove('hidden'); document.getElementById('connect-wallet-btn-header').classList.add('hidden'); closeWalletModal(); }
-    function disconnectWallet() { walletConnected = false; walletAddress = ''; document.getElementById('wallet-address').classList.add('hidden'); document.getElementById('connect-wallet-btn-header').classList.remove('hidden'); closeWalletModal(); }
-    function copyContract() { navigator.clipboard.writeText(document.getElementById('contractAddress').value).then(() => { const copyBtn = document.getElementById('copyBtn'); copyBtn.textContent = 'COPIED!'; setTimeout(() => { copyBtn.textContent = 'COPY'; }, 2000); }).catch(err => console.error('Failed to copy text: ', err)); }
-
-    const headline = document.getElementById('hero-headline');
-    const text = "Weaponized Influence.";
-    function typeEffect() { headline.textContent = ""; headline.classList.add('typing-anim'); headline.textContent = text; }
-    
-    // --- THEME TOGGLE SCRIPT ---
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const darkIcon = document.getElementById('theme-toggle-dark-icon');
-    const lightIcon = document.getElementById('theme-toggle-light-icon');
-    
-    function applyTheme(theme) {
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-            darkIcon.classList.remove('hidden');
-            lightIcon.classList.add('hidden');
-        } else {
-            document.documentElement.classList.remove('dark');
-            lightIcon.classList.remove('hidden');
-            darkIcon.classList.add('hidden');
+        function showLanding() {
+            panelPage.classList.add('hidden');
+            landingPage.classList.remove('hidden');
+            lucide.createIcons();
         }
-        updateChartTheme();
-    }
 
-    themeToggleBtn.addEventListener('click', function() {
-        const isDark = document.documentElement.classList.toggle('dark');
-        localStorage.setItem('color-theme', isDark ? 'dark' : 'light');
-        applyTheme(isDark ? 'dark' : 'light');
-    });
+        // --- LANDING PAGE SCRIPT ---
+        function scrollToSection(sectionId) { document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' }); }
+        function initTypingEffect() {
+            const headline = document.querySelector('.typing-effect');
+            if (headline) {
+                headline.style.width = '0';
+                setTimeout(() => { headline.style.width = '100%'; }, 500);
+            }
+        }
+        function terminalLoad() {
+            const terminalLines = document.querySelectorAll('.terminal-prompt');
+            terminalLines.forEach((line, index) => {
+                setTimeout(() => {
+                    line.style.opacity = '1';
+                    line.style.transform = 'translateX(0)';
+                }, index * 300);
+            });
+        }
 
-    // --- CHART THEME ---
-    function updateChartTheme() {
-        if (!priceChart) return;
-        const isDark = document.documentElement.classList.contains('dark');
-        priceChart.options.scales.y.ticks.color = isDark ? '#9ca3af' : '#00bb00';
-        priceChart.data.datasets[0].borderColor = isDark ? '#ff8717' : '#00ff00';
-        priceChart.data.datasets[0].backgroundColor = isDark ? 'rgba(255,135,23,0.1)' : 'rgba(0, 255, 0, 0.1)';
-        priceChart.update();
-    }
+        // --- PANEL SCRIPT ---
+        const ALL_SERVICES = [
+            { id: 101, realm: 'cmc', name: 'Watchlist Followers', price: 25.00 },
+            { id: 102, realm: 'cmc', name: 'Vote Bombing', price: 18.50 },
+            { id: 103, realm: 'cmc', name: 'Comment Army', price: 50.00 },
+            { id: 201, realm: 'twitter', name: 'Targeted Followers', price: 15.00 },
+            { id: 202, realm: 'twitter', name: 'Trend Hijacking', price: 120.00 },
+            { id: 203, realm: 'twitter', name: 'Influence Bots', price: 35.00 },
+            { id: 301, realm: 'telegram', name: 'Channel Flooding', price: 8.00 },
+            { id: 302, realm: 'telegram', name: 'Message Amplification', price: 22.00 },
+            { id: 401, realm: 'discord', name: 'Member Growth', price: 12.00 },
+            { id: 402, realm: 'discord', name: 'Server Boosts (L3)', price: 45.00 },
+        ];
 
-    window.onload = () => {
-        priceDisplay = document.getElementById('pumpdit-price');
-        chartCtx = document.getElementById('priceChart').getContext('2d');
-        walletModal = document.getElementById('walletModal');
-        walletModalContent = document.getElementById('wallet-modal-content');
-        orderModal = document.getElementById('orderModal');
-        opsContainer = document.getElementById('ops-container');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize landing page animations
+            initTypingEffect();
+            terminalLoad();
+            lucide.createIcons();
 
-        priceChart = new Chart(chartCtx, { type: 'line', data: { labels: Array(40).fill(''), datasets: [{ label: '$PUMPDIT', data: Array(40).fill(lockedPrice), tension: 0.4, borderWidth: 2, pointRadius: 0 }] }, options: { scales: { y: { beginAtZero: false, ticks: { font: { size: 8, family: "'Press Start 2P', cursive" } } }, x: { ticks: { display: false } } }, plugins: { legend: { display: false } } } });
-        
-        const initialTheme = localStorage.getItem('color-theme') || 'dark';
-        applyTheme(initialTheme);
-        
-        loadIcons();
-        typeEffect();
-        const hiddenElements = document.querySelectorAll('.section-hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
-        
-        for(let i = 0; i < 3; i++) { createRandomOp(); }
-        setInterval(createRandomOp, 4000);
+            // Panel Logic
+            const realmTabs = document.querySelectorAll('#realm-tabs .panel-tab');
+            const serviceTablesContainer = document.getElementById('service-tables');
+            const scrollHeader = document.getElementById('scroll-header');
+            const quantityInput = document.getElementById('quantity');
+            const linkInput = document.getElementById('link');
+            const placeholder = document.getElementById('order-details-placeholder');
+            const summary = document.getElementById('order-summary');
+            const summaryServiceName = document.getElementById('summary-service-name');
+            const totalCostEl = document.getElementById('total-cost');
+            const placeOrderBtn = document.getElementById('place-order-btn');
 
-        document.getElementById('orderService').addEventListener('change', updateOrderTotal);
-        document.getElementById('orderQty').addEventListener('input', updateOrderTotal);
-        document.addEventListener('keydown', (e) => { if (e.key.toLowerCase() === 'j') { const egg = document.getElementById('easterEgg'); egg.style.display = 'block'; loadIcons(); setTimeout(() => { egg.style.display = 'none' }, 3000); } });
+            let selectedService = null;
 
-        updateOrderTotal();
-        setInterval(updateLivePrice, 1500);
-    };
-  </script>
+            function calculateCost() {
+                if (!selectedService || !quantityInput.value) {
+                    totalCostEl.textContent = '0.00 USD';
+                    return;
+                }
+                const quantity = parseInt(quantityInput.value, 10);
+                const pricePer1k = parseFloat(selectedService.price);
+                if (isNaN(quantity) || quantity <= 0) {
+                    totalCostEl.textContent = '0.00 USD';
+                    return;
+                }
+                const cost = (pricePer1k / 1000) * quantity;
+                totalCostEl.textContent = `${cost.toFixed(2)} USD`;
+                validateForm();
+            }
+
+            function validateForm() {
+                const isServiceSelected = !!selectedService;
+                const isLinkValid = linkInput.value.trim().startsWith('http');
+                const isQuantityValid = parseInt(quantityInput.value, 10) > 0;
+                placeOrderBtn.disabled = !(isServiceSelected && isLinkValid && isQuantityValid);
+            }
+
+            function resetOrderForm() {
+                selectedService = null;
+                placeholder.classList.remove('hidden');
+                summary.classList.add('hidden');
+                linkInput.value = '';
+                quantityInput.value = '';
+                totalCostEl.textContent = '0.00 USD';
+                placeOrderBtn.disabled = true;
+                document.querySelectorAll('.panel-service-row').forEach(r => r.classList.remove('selected'));
+            }
+
+            function renderServices(realm) {
+                const services = ALL_SERVICES.filter(s => s.realm === realm);
+                let tableHTML = `
+                    <table class="w-full text-left">
+                        <thead class="text-gray-400">
+                            <tr>
+                                <th class="p-3">ID</th>
+                                <th class="p-3">WEAPON</th>
+                                <th class="p-3 text-right">COST / 1K</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                services.forEach(service => {
+                    tableHTML += `
+                        <tr class="panel-service-row border-t border-[#2C2A37]" data-id="${service.id}">
+                            <td class="p-3 text-gray-500">${service.id}</td>
+                            <td class="p-3 text-white font-semibold">${service.name}</td>
+                            <td class="p-3 text-green-400 font-bold text-right">$${service.price.toFixed(2)}</td>
+                        </tr>
+                    `;
+                });
+                tableHTML += `</tbody></table>`;
+                serviceTablesContainer.innerHTML = tableHTML;
+
+                // Bind events to new rows
+                document.querySelectorAll('.panel-service-row').forEach(row => {
+                    row.addEventListener('click', () => {
+                        document.querySelectorAll('.panel-service-row').forEach(r => r.classList.remove('selected'));
+                        row.classList.add('selected');
+                        
+                        const serviceId = parseInt(row.dataset.id, 10);
+                        selectedService = ALL_SERVICES.find(s => s.id === serviceId);
+
+                        placeholder.classList.add('hidden');
+                        summary.classList.remove('hidden');
+                        summaryServiceName.textContent = selectedService.name;
+                        calculateCost();
+                        validateForm();
+                    });
+                });
+            }
+
+            realmTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const realm = tab.dataset.realm;
+                    realmTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    scrollHeader.textContent = `${tab.textContent} Arsenal`;
+                    renderServices(realm);
+                    resetOrderForm();
+                });
+            });
+
+            quantityInput.addEventListener('input', calculateCost);
+            linkInput.addEventListener('input', validateForm);
+            
+            placeOrderBtn.addEventListener('click', () => {
+                alert(`Operation Launched!\n\nWeapon: ${selectedService.name}\nTarget: ${linkInput.value}\nStrength: ${quantityInput.value}\nCost: ${totalCostEl.textContent}`);
+                resetOrderForm();
+            });
+
+            // Initial render
+            renderServices('cmc');
+        });
+    </script>
 </body>
 </html>
